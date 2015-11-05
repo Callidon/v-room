@@ -32,13 +32,27 @@ class ExampleSpec extends FunSpec with Matchers with BeforeAndAfter {
 
   describe("A Stack") {
 
+    describe("#getFoo") {
+
+      val table = Table(
+        ("colname_1", "colname_2"),
+        (1,1)
+      )
+
+      // Exemple de test avec des resources paramétrées
+      it("should be able to make a dummy test with parametrized resources") {
+        forAll(table) { (colname_1: Int, colname_2: Int) =>
+          (colname_1) should be (colname_2)
+        }
+      }
+    }
+
+
+  describe("#stack") {
     val stack = new Stack[Int]
-    val table = Table(
-      ("colname_1", "colname_2"),
-      (1,1)
-    )
 
     before {
+      stack.clear()
       stack.push(1)
       stack.push(2)
     }
@@ -53,12 +67,7 @@ class ExampleSpec extends FunSpec with Matchers with BeforeAndAfter {
       stack.pop()
       an [NoSuchElementException] should be thrownBy stack.pop()
     }
+  }
 
-    // Exemple de test avec des resources paramétrées
-    it("should be able to make a dummy test with parametrized resources") {
-      forAll(table) { (colname_1: Int, colname_2: Int) =>
-        (colname_1) should be (colname_2)
-      }
-    }
   }
 }
