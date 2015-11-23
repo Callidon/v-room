@@ -12,7 +12,7 @@ import fr.univnantes.vroom.materiel.{MaterielFixe, Materiel}
  * @param superficie La superficie de la salle
  * @param batiment Le bâtiment dans lequel se situe la salle
  */
-class Salle(var no_etage: Int,
+case class Salle(var no_etage: Int,
             var no_salle: Int,
             var no_bat: Int,
             var superficie: Int,
@@ -28,7 +28,7 @@ class Salle(var no_etage: Int,
    * Ajoute une nouvelle réservation
    * @param reserv La réservation à ajouter
    */
-  def addreservation(reserv: Reservation): Unit = {
+  def addReservation(reserv: Reservation): Unit = {
     _reservations += reserv
   }
 

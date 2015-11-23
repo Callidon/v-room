@@ -12,7 +12,7 @@ import fr.univnantes.vroom.tarifs.{TarifTitre, TarifOrigine}
  * @param origine Le tarif lié à l'origine du demandeur
  * @param titre Le tarif lié au titre du demandeur
  */
-class Demandeur(var no_dem: Int,
+case class Demandeur(var no_dem: Int,
                 var nom: String,
                 var adresse: Adresse,
                 var origine: TarifOrigine,

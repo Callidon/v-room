@@ -17,7 +17,7 @@ import fr.univnantes.vroom.tarifs.{TarifDuree, TarifManifestation}
  * @param manifestation le tarif lié à au type de la manifestation
  * @param duree Le tarif lié à la durée de la réservation
  */
-class Reservation(var ref_resa: Int,
+case class Reservation(var ref_resa: Int,
                   var date_resa: Date,
                   var montant: Double,
                   var salle: Salle,
@@ -42,5 +42,9 @@ class Reservation(var ref_resa: Int,
    */
   def popMateriel(materiel: MaterielMobile) : Unit = {
     _materiels_mobile -= materiel
+  }
+
+  def calculTarif(): Integer = {
+    return 1
   }
 }
