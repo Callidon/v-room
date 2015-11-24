@@ -44,7 +44,17 @@ case class Reservation(var ref_resa: Int,
     _materiels_mobile -= materiel
   }
 
-  def calculTarif(): Integer = {
-    return 1
+  /**
+   * Méthode qui calcule le montant à payer pour s'acquitter de la réservation
+   * @return Le montant à payer pour s'acquitter de la réservation
+   */
+  def calculTarif(): Double = {
+    val cout_tarif = salle.calculerTarif() + demandeur.calculerTarif() + manifestation.tarif + duree.tarif
+
+    val tarif_materiels = _materiels_mobile.foldLeft(0.0) { (acc, materiel) =>
+      acc + materiel.calculerTarif()
+    }
+
+    montant + cout_tarif + tarif_materiels
   }
 }

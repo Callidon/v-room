@@ -18,4 +18,12 @@ case class Demandeur(var no_dem: Int,
                 var origine: TarifOrigine,
                 var titre: TarifTitre) {
 
+
+  /**
+   * Méthode renvoyant le tarif lié au demandeur
+   * @return Le tarif lié au demandeur
+   */
+  def calculerTarif() : Double = {
+    origine.tarif + titre.tarif
+  }
 }

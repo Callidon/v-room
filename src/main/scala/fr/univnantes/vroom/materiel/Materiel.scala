@@ -12,4 +12,13 @@ import fr.univnantes.vroom.tarifs.TarifMateriel
  */
 abstract class Materiel(var code: Int,
                         var libelle: String,
-                        var tarif: TarifMateriel );
+                        var tarif: TarifMateriel ) {
+
+  /**
+   * Méthode renvoyant le tarif du matériel
+   * @return Le tarif du matériel
+   */
+  def calculerTarif() : Double = {
+    tarif.tarif
+  }
+}

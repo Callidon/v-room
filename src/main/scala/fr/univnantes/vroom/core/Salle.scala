@@ -18,27 +18,8 @@ case class Salle(var no_etage: Int,
             var superficie: Int,
             var batiment: Batiment ) {
 
-  // Ensemble des réservations liées à la salle
-  private var _reservations : Set[Reservation] = Set()
-
   // Ensemble des matériels fixes liés à la salle
   private var _materiels_fixes : Set[Materiel] = Set()
-
-  /**
-   * Ajoute une nouvelle réservation
-   * @param reserv La réservation à ajouter
-   */
-  def addReservation(reserv: Reservation): Unit = {
-    _reservations += reserv
-  }
-
-  /**
-   * Supprime une réservation
-   * @param reserv La réservation à supprimer
-   */
-  def popReservation(reserv: Reservation) : Unit = {
-    _reservations -= reserv
-  }
 
   /**
    * Ajoute un nouveau matériel fixe
@@ -54,5 +35,15 @@ case class Salle(var no_etage: Int,
    */
   def popMateriel(materiel: MaterielFixe) : Unit = {
     _materiels_fixes -= materiel
+  }
+
+  /**
+   * Méthode renvoyant le tarif de la salle
+   * @return Le tarif de la salle
+   */
+  def calculerTarif() : Double = {
+    _materiels_fixes.foldLeft(0.0) { (acc, materiel) =>
+      acc + materiel.calculerTarif()
+    }
   }
 }
