@@ -29,6 +29,13 @@ case class Reservation(var ref_resa: Int,
   private var _materiels_mobile : Set[Materiel] = Set()
 
   /**
+    * Affiche recursivement toutes les informations de la réservation
+    * @return
+    */
+  override def toString: String = "Référence :" + ref_resa + " \n Date :" + date_resa + " \n Montant : "+montant+"" +
+    "  " +salle+ " "+demandeur+" "+manifestation+" " +duree
+
+  /**
    * Ajoute un nouveau matériel mobile
    * @param materiel Le matériel mobile à ajouter
    */
