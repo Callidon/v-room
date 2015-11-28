@@ -7,13 +7,13 @@ import fr.univnantes.vroom.datacontroller.Mediator
  */
 class Systeme(val mediator : Mediator) {
 
-  private var _salles : Set[Salle] = Set();
+  private var _salles : Set[Salle] = Set()
 
-  private var _reservations : Set[Reservation] = Set();
+  private var _reservations : Set[Reservation] = Set()
 
-  private var _batiments : Set[Batiment] = Set();
+  private var _batiments : Set[Batiment] = Set()
 
-  private var _demandeurs : Set[Demandeur] = Set();
+  private var _demandeurs : Set[Demandeur] = Set()
 
   /**
    * Ajoute une nouvelle salle
@@ -45,6 +45,14 @@ class Systeme(val mediator : Mediator) {
    */
   def popReservation(reservation : Reservation) : Unit = {
     _reservations -= reservation
+  }
+
+  /**
+    * Affiche les informations relative aux réservations
+    * @return
+    */
+  def viewReservation():Unit = {
+    println(this._reservations)
   }
 
   /**

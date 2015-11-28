@@ -10,4 +10,14 @@ package fr.univnantes.vroom.tarifs
  */
 abstract class Tarif(var code: Int,
                      var libelle: String,
-                     var tarif: Double);
+                     var tarif: Double){
+
+  /**
+    * Affiche les informations relatives au tarif
+    * @return
+    */
+  override def toString : String = " Origine : "+
+    " \n  | Code :"+code+
+    " \n  | Libelle :"+libelle+
+    " \n  | Tarif :"+tarif
+}

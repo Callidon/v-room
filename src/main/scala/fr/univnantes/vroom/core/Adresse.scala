@@ -14,5 +14,15 @@ case class Adresse(var numero: String,
               var code: String,
               var ville: String ) {
 
+  /**
+    * Affiche les informations de l'adresse
+    * @return
+    */
+  override def toString: String = " Adresse :  "+
+    " \n  | Numero : "+numero+
+    " \n  | Adresse : "+adresse+
+    " \n  | Code postal : "+code+
+    " \n  | Ville : "+ville
+
   //def unapply(adresse: Adresse): Option[(String, Adresse, String, String)] = Some(numero, adresse, code, ville);
 }

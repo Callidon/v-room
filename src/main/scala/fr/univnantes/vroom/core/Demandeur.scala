@@ -18,7 +18,12 @@ case class Demandeur(var no_dem: Int,
                 var origine: TarifOrigine,
                 var titre: TarifTitre) {
 
-
+    override def toString : String = " Demandeur : "+
+      " \n  | Numero du demandeur :"+no_dem+
+      " \n  | Nom :"+nom+
+      " \n  | "+adresse.toString()+
+      " \n  | "+origine.toString()+
+      " \n  | "+titre.toString()
   /**
    * Méthode renvoyant le tarif lié au demandeur
    * @return Le tarif lié au demandeur

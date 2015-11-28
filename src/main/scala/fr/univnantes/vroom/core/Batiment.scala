@@ -12,7 +12,16 @@ case class Batiment(var no_bat: Int,
                var nom: String,
                var adresse: Adresse ) {
 
-  private var _salles : Set[Salle] = Set();
+  private var _salles : Set[Salle] = Set()
+
+  /**
+    * Affiche récursivement les informations du batiment
+    * @return
+    */
+  override def toString : String = " - Batiment : "+
+    " \n  | Numero batiment :"+no_bat+
+    " \n  | Nom : "+nom+
+    " \n  | "+adresse
 
   /**
    * Ajoute une nouvelle salle

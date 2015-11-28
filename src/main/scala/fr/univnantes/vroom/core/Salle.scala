@@ -22,6 +22,16 @@ case class Salle(var no_etage: Int,
   private var _materiels_fixes : Set[Materiel] = Set()
 
   /**
+    * Affiche récursivement les informations de la salle
+    * @return
+    */
+  override def toString : String = " - Salle : \n  | Numerobatiment : "+ no_bat +
+    " \n  | "+batiment+
+    " \n  | Numero Etage :"+no_etage+
+    " \n  | Numero Salle : "+no_salle+
+    " \n  | Superficie : "+superficie
+
+  /**
    * Ajoute un nouveau matériel fixe
    * @param materiel Le matériel fixe à ajouter
    */
