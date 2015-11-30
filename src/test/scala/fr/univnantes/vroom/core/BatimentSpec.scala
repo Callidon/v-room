@@ -19,23 +19,5 @@ class BatimentSpec extends FunSpec with Matchers {
        batiment.toString should be (batiment2.toString)
      }
 
-     it("should have his getters working") {
-       batiment.no_bat should be (10)
-       batiment.nom should be ("Salle des sports")
-       batiment.adresse should be theSameInstanceAs adresse
-     }
-
-     it("should have his setters working") {
-       batiment.no_bat = 11
-       batiment.no_bat should be (11)
-
-       batiment.nom = "Salle des fêtes"
-       batiment.nom should be ("Salle des fêtes")
-
-       val other_adresse = new Adresse("185B", "Rue des petits canards", "22750", "Issy-Les-Moulineaux")
-       batiment.adresse = other_adresse
-       batiment.adresse should be theSameInstanceAs other_adresse
-     }
-
    }
  }

@@ -3,7 +3,7 @@ package fr.univnantes.vroom
 import java.util.Date
 
 import fr.univnantes.vroom.core._
-import fr.univnantes.vroom.tarifs.{TarifDuree, TarifManifestation, TarifOrigine, TarifTitre}
+import fr.univnantes.vroom.tarifs._
 
 /**
  * Ensemble de constantes pour les tests unitaires
@@ -24,9 +24,11 @@ object TestsConstants {
 
   val origine = new TarifOrigine(6, "Tarif pour l'origine X", 35.0)
 
+  val tarif_salle = new TarifSalle(7, "Tarif pour la salle", 135.0)
+
   val demandeur = new Demandeur(10, "Philippe", adresse, origine, titre)
 
-  val salle = new Salle(1, 10, 15, 60, batiment)
+  val salle = new Salle(1, 10, 15, 60, batiment, tarif_salle)
 
   val reservation = new Reservation(2, date, 15.0, salle, demandeur, manifestation, duree)
 

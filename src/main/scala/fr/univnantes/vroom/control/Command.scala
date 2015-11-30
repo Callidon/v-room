@@ -5,11 +5,11 @@ import fr.univnantes.vroom.core.Systeme
 /**
  * Classe représentant une commande concrète
  */
-abstract class Command(system : Systeme) {
+abstract class Command[R](system : Systeme) {
 
   /**
    * Méthode exécutant la commande contre le système
    */
-  def execute() : Unit;
+  def execute() : R
 
 }

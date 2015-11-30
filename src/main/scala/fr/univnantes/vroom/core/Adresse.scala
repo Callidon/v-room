@@ -9,20 +9,18 @@ package fr.univnantes.vroom.core
  * @param code Le code postal associé à l'adresse
  * @param ville Le nom de la ville associée à l'adresse
  */
-case class Adresse(var numero: String,
-              var adresse: String,
-              var code: String,
-              var ville: String ) {
+case class Adresse( var numero: String,
+                    var adresse: String,
+                    var code: String,
+                    var ville: String ) {
 
   /**
     * Affiche les informations de l'adresse
     * @return
     */
-  override def toString: String = " Adresse :  "+
-    " \n  | Numero : "+numero+
-    " \n  | Adresse : "+adresse+
-    " \n  | Code postal : "+code+
-    " \n  | Ville : "+ville
-
-  //def unapply(adresse: Adresse): Option[(String, Adresse, String, String)] = Some(numero, adresse, code, ville);
+  override def toString: String = " Adresse :  " +
+    " \n  | Numero : " + numero +
+    " \n  | Adresse : " + adresse +
+    " \n  | Code postal : " + code +
+    " \n  | Ville : " + ville
 }

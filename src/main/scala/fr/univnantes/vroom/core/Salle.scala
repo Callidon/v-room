@@ -1,6 +1,7 @@
 package fr.univnantes.vroom.core
 
 import fr.univnantes.vroom.materiel.{MaterielFixe, Materiel}
+import fr.univnantes.vroom.tarifs.TarifSalle
 
 /**
  * Classe représentant une salle
@@ -11,12 +12,14 @@ import fr.univnantes.vroom.materiel.{MaterielFixe, Materiel}
  * @param no_bat Le numéro du bâtiment où se situe la salle
  * @param superficie La superficie de la salle
  * @param batiment Le bâtiment dans lequel se situe la salle
+ * @param tarif Le tarif lié au type de la salle
  */
-case class Salle(var no_etage: Int,
-            var no_salle: Int,
-            var no_bat: Int,
-            var superficie: Int,
-            var batiment: Batiment ) {
+case class Salle( var no_etage: Int,
+                  var no_salle: Int,
+                  var no_bat: Int,
+                  var superficie: Int,
+                  var batiment: Batiment,
+                  var tarif : TarifSalle) {
 
   // Ensemble des matériels fixes liés à la salle
   private var _materiels_fixes : Set[Materiel] = Set()
@@ -26,10 +29,10 @@ case class Salle(var no_etage: Int,
     * @return
     */
   override def toString : String = " - Salle : \n  | Numerobatiment : "+ no_bat +
-    " \n  | "+batiment+
-    " \n  | Numero Etage :"+no_etage+
-    " \n  | Numero Salle : "+no_salle+
-    " \n  | Superficie : "+superficie
+    " \n  | " + batiment +
+    " \n  | Numero Etage : " + no_etage +
+    " \n  | Numero Salle : " + no_salle +
+    " \n  | Superficie : " + superficie
 
   /**
    * Ajoute un nouveau matériel fixe

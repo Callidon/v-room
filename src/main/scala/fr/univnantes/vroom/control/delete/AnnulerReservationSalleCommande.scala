@@ -1,5 +1,6 @@
-package fr.univnantes.vroom.control
+package fr.univnantes.vroom.control.delete
 
+import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.{Reservation, Systeme}
 
 /**
@@ -8,7 +9,7 @@ import fr.univnantes.vroom.core.{Reservation, Systeme}
 class AnnulerReservationSalleCommande (
                                         system : Systeme,
                                         reservation : Reservation
-                                      ) extends Command(system) {
+                                      ) extends Command[Unit](system) {
 
   override def execute() : Unit = {
     system.mediator.delete(reservation)

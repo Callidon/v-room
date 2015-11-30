@@ -87,4 +87,40 @@ class Systeme(val mediator : Mediator) {
     _demandeurs -= demandeur
   }
 
+  /**
+   *
+   * @param predicat
+   * @return
+   */
+  def searchReservation( predicat : (Reservation) => Boolean) : Set[Reservation] = {
+    _reservations.filter(predicat)
+  }
+
+  /**
+   *
+   * @param predicat
+   * @return
+   */
+  def searchSalle( predicat : (Salle) => Boolean) : Set[Salle] = {
+    _salles.filter(predicat)
+  }
+
+  /**
+   *
+   * @param predicat
+   * @return
+   */
+  def searchBatiment( predicat : (Batiment) => Boolean) : Set[Batiment] = {
+    _batiments.filter(predicat)
+  }
+
+  /**
+   *
+   * @param predicat
+   * @return
+   */
+  def searchDemandeur( predicat : (Demandeur) => Boolean) : Set[Demandeur] = {
+    _demandeurs.filter(predicat)
+  }
+
 }

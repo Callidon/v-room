@@ -3,7 +3,7 @@ package fr.univnantes.vroom.datacontroller
 /**
  * Classe représentant un gestionnaire de données abstrait
  */
-abstract class DataManager {
+abstract class DataManager() {
 
   def insert(value: Any): Unit;
 

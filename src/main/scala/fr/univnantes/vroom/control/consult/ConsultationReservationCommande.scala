@@ -1,5 +1,6 @@
-package fr.univnantes.vroom.control
+package fr.univnantes.vroom.control.consult
 
+import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.Systeme
 
 /**
@@ -7,7 +8,7 @@ import fr.univnantes.vroom.core.Systeme
   */
 class ConsultationReservationCommande(
                                      system : Systeme
-                                     ) extends Command(system){
+                                     ) extends Command[Unit](system){
   override def execute(): Unit = {
     system.viewReservation()
   }
