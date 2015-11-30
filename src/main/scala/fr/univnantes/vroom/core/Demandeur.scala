@@ -12,11 +12,11 @@ import fr.univnantes.vroom.tarifs.{TarifTitre, TarifOrigine}
  * @param origine Le tarif lié à l'origine du demandeur
  * @param titre Le tarif lié au titre du demandeur
  */
-case class Demandeur(var no_dem: Int,
-                var nom: String,
-                var adresse: Adresse,
-                var origine: TarifOrigine,
-                var titre: TarifTitre) {
+case class Demandeur( var no_dem: Int,
+                      var nom: String,
+                      var adresse: Adresse,
+                      var origine: TarifOrigine,
+                      var titre: TarifTitre) {
 
     override def toString : String = " Demandeur : "+
       " \n  | Numero du demandeur :"+no_dem+
@@ -24,11 +24,10 @@ case class Demandeur(var no_dem: Int,
       " \n  | "+adresse.toString()+
       " \n  | "+origine.toString()+
       " \n  | "+titre.toString()
+
   /**
    * Méthode renvoyant le tarif lié au demandeur
    * @return Le tarif lié au demandeur
    */
-  def calculerTarif() : Double = {
-    origine.tarif + titre.tarif
-  }
+  def calculerTarif() : Double = origine.tarif + titre.tarif
 }

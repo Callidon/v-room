@@ -5,10 +5,10 @@ package fr.univnantes.vroom.datacontroller
  */
 abstract class DataManager() {
 
-  def insert(value: Any): Unit;
+  def insert(value: Any): Unit
 
-  def update(value: Any) : Unit;
+  def update(value: Any) : Unit
 
-  def delete(value : Any) : Unit;
+  def delete(value : Any) : Unit
 
 }

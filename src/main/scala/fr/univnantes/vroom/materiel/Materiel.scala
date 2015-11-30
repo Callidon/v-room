@@ -18,7 +18,14 @@ abstract class Materiel(var code: Int,
    * Méthode renvoyant le tarif du matériel
    * @return Le tarif du matériel
    */
-  def calculerTarif() : Double = {
-    tarif.tarif
-  }
+  def calculerTarif() : Double = tarif.tarif
+
+  /**
+   * Affiche les informations relatives au tarif
+   * @return
+   */
+  override def toString : String = " Type de matériel : "+
+    " \n  | Code :" + code +
+    " \n  | Libelle :" + libelle +
+    " \n  | Tarif :" + tarif
 }

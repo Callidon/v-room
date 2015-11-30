@@ -32,31 +32,30 @@ case class Salle( var no_etage: Int,
     " \n  | " + batiment +
     " \n  | Numero Etage : " + no_etage +
     " \n  | Numero Salle : " + no_salle +
-    " \n  | Superficie : " + superficie
+    " \n  | Superficie : " + superficie +
+    " \n  | " + _materiels_fixes
 
   /**
    * Ajoute un nouveau matériel fixe
    * @param materiel Le matériel fixe à ajouter
    */
-  def addMateriel(materiel: MaterielFixe): Unit = {
-    _materiels_fixes += materiel
-  }
+  def addMateriel(materiel: MaterielFixe): Unit = _materiels_fixes += materiel
 
   /**
    * Supprime un matériel fixe
    * @param materiel Le matériel fixe à supprimer
    */
-  def popMateriel(materiel: MaterielFixe) : Unit = {
-    _materiels_fixes -= materiel
-  }
+  def popMateriel(materiel: MaterielFixe) : Unit = _materiels_fixes -= materiel
 
   /**
    * Méthode renvoyant le tarif de la salle
    * @return Le tarif de la salle
    */
   def calculerTarif() : Double = {
-    _materiels_fixes.foldLeft(0.0) { (acc, materiel) =>
+    val tarif_materiels = _materiels_fixes.foldLeft(0.0) { (acc, materiel) =>
       acc + materiel.calculerTarif()
     }
+
+    tarif.tarif + tarif_materiels
   }
 }

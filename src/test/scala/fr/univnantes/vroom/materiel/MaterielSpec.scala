@@ -8,12 +8,19 @@ import org.scalatest.{BeforeAndAfter, FunSpec, Matchers}
   */
 class MaterielSpec extends FunSpec with Matchers {
 
-   describe("A concrete Materiel") {
+   describe("Materiel") {
 
      class TestMateriel(code: Int, libelle: String, tarif: TarifMateriel) extends Materiel(code, libelle, tarif)
 
-     val tarif = new TarifMateriel(10, "Tarif pour les meubles", 50.0)
-     val materiel = new TestMateriel(10, "Meuble", tarif)
+     val tarif = new TarifMateriel(1, "Tarif pour le matériel de test", 50.0)
+     val materiel = new TestMateriel(2, "Matériel de test", tarif)
+
+     describe("#calculerTarif") {
+
+       it("should calculate the correct amount") {
+         materiel.calculerTarif() should be (50.0)
+       }
+     }
 
    }
  }

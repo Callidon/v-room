@@ -16,8 +16,8 @@ abstract class Tarif(var code: Int,
     * Affiche les informations relatives au tarif
     * @return
     */
-  override def toString : String = " Origine : "+
-    " \n  | Code :"+code+
-    " \n  | Libelle :"+libelle+
-    " \n  | Tarif :"+tarif
+  override def toString : String = " Type de tarif : "+
+    " \n  | Code :" + code +
+    " \n  | Libelle :" + libelle +
+    " \n  | Tarif :" + tarif
 }
