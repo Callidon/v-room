@@ -12,7 +12,7 @@ class SalleSpec extends FunSpec with Matchers {
 
   describe("Salle") {
 
-    val salle = TestsConstants.salle
+    val salle = TestsConstants.salle.copy()
 
     describe("#calculerTarif") {
 
@@ -21,7 +21,6 @@ class SalleSpec extends FunSpec with Matchers {
       }
 
       it("should calculate the correct amount with some furnitures") {
-        val tarif = new TarifMateriel(1, "Tarif de test pour les meubles", 20.0)
         val first_materiel = new MaterielFixe(2, "Meuble standard", TestsConstants.tarif_materiel)
         val second_materiel = new MaterielFixe(3, "Autre meuble standard", TestsConstants.tarif_materiel)
 

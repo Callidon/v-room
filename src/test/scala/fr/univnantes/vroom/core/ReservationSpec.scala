@@ -11,7 +11,7 @@ import org.scalatest.{Matchers, FunSpec}
 class ReservationSpec extends FunSpec with Matchers {
   describe("Reservation") {
 
-    val reservation = TestsConstants.reservation
+    val reservation = TestsConstants.reservation.copy()
 
     describe("#calculerTarif") {
 
