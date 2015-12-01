@@ -14,7 +14,7 @@ object TestsConstants {
 
   val batiment = new Batiment(10, "Salle des sports", adresse)
 
-  val date = new Date();
+  val date = new Date()
 
   val duree = new TarifDuree(3, "Tarif en fonction de la durée", 60.0)
 
@@ -25,6 +25,8 @@ object TestsConstants {
   val origine = new TarifOrigine(6, "Tarif pour l'origine X", 35.0)
 
   val tarif_salle = new TarifSalle(7, "Tarif pour la salle", 135.0)
+
+  val tarif_materiel = new TarifMateriel(8, "Tarif pour un matériel", 20.0)
 
   val demandeur = new Demandeur(10, "Philippe", adresse, origine, titre)
 

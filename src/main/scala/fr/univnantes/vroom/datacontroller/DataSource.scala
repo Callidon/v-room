@@ -1,6 +1,6 @@
 package fr.univnantes.vroom.datacontroller
 
 /**
- * Created by E122371M on 30/11/15.
+ * Classe représentant une source de données abstraite
  */
 abstract class DataSource

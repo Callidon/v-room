@@ -7,18 +7,18 @@ import org.scalatest.{FunSpec, Matchers}
   */
 class AdresseSpec extends FunSpec with Matchers {
 
-   describe("An Adress") {
+  describe("Adresse") {
 
+    val adresse = new Adresse("5B", "Rue du port", "44000", "Nantes")
 
-     val adresse = new Adresse("5B", "Rue du port", "44000", "Nantes")
-
-     it("toString should be better..."){
-       adresse.toString should be (" Adresse :  "+
-         " \n  | Numero : 5B"+
-         " \n  | Adresse : Rue du port"+
-         " \n  | Code postal : 44000"+
-         " \n  | Ville : Nantes")
-     }
-
-   }
+    describe("#toString") {
+      it("should return a correct representation of the object"){
+        adresse.toString should be (" Adresse :  "+
+          " \n  | Numero : 5B"+
+          " \n  | Adresse : Rue du port"+
+          " \n  | Code postal : 44000"+
+          " \n  | Ville : Nantes")
+      }
+    }
+  }
  }

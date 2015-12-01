@@ -32,8 +32,8 @@ case class Reservation( var ref_resa: Int,
     * Affiche recursivement toutes les informations de la réservation
     * @return
     */
-  override def toString: String = "Référence :" + ref_resa + " \n Date :" + date_resa + " \n Montant : "+montant+"" +
-    "  " +salle+ " "+demandeur+" "+manifestation+" " +duree
+  override def toString: String = "Référence :" + ref_resa + " \n Date :" + date_resa + " \n Montant : " + montant + "" +
+    "  "  + salle + " " + demandeur + " " + manifestation + " " + duree
 
   /**
    * Ajoute un nouveau matériel mobile

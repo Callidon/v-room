@@ -22,8 +22,8 @@ class SalleSpec extends FunSpec with Matchers {
 
       it("should calculate the correct amount with some furnitures") {
         val tarif = new TarifMateriel(1, "Tarif de test pour les meubles", 20.0)
-        val first_materiel = new MaterielFixe(2, "Meuble standard", tarif)
-        val second_materiel = new MaterielFixe(3, "Autre meuble standard", tarif)
+        val first_materiel = new MaterielFixe(2, "Meuble standard", TestsConstants.tarif_materiel)
+        val second_materiel = new MaterielFixe(3, "Autre meuble standard", TestsConstants.tarif_materiel)
 
         salle.addMateriel(first_materiel)
         salle.calculerTarif() should be (155.0)
