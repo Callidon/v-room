@@ -2,8 +2,8 @@ package fr.univnantes.vroom.core
 
 import java.util.Date
 
-import fr.univnantes.vroom.materiel.{MaterielMobile, Materiel}
-import fr.univnantes.vroom.tarifs.{TarifDuree, TarifManifestation}
+import fr.univnantes.vroom.core.materiel.{MaterielMobile, Materiel}
+import fr.univnantes.vroom.core.tarifs.{TarifDuree, TarifManifestation}
 
 /**
  * Classe représentant une réservation

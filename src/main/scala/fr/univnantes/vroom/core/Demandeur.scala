@@ -1,6 +1,6 @@
 package fr.univnantes.vroom.core
 
-import fr.univnantes.vroom.tarifs.{TarifTitre, TarifOrigine}
+import fr.univnantes.vroom.core.tarifs.{TarifTitre, TarifOrigine}
 
 /**
  * Classe représentant un démandeur, qui cherche à réserver une salle

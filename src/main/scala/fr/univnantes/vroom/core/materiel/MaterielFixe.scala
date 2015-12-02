@@ -1,6 +1,6 @@
-package fr.univnantes.vroom.materiel
+package fr.univnantes.vroom.core.materiel
 
-import fr.univnantes.vroom.tarifs.TarifMateriel
+import fr.univnantes.vroom.core.tarifs.TarifMateriel
 
 /**
  * Classe abstraite représentant un matériel fixe

@@ -3,7 +3,7 @@ package fr.univnantes.vroom
 import java.util.Date
 
 import fr.univnantes.vroom.core._
-import fr.univnantes.vroom.tarifs._
+import fr.univnantes.vroom.core.tarifs._
 
 /**
  * Ensemble de constantes pour les tests unitaires

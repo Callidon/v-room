@@ -1,4 +1,4 @@
-package fr.univnantes.vroom.tarifs
+package fr.univnantes.vroom.core.tarifs
 
 /**
  * Classe abstraite représentant un tarif

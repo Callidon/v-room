@@ -1,7 +1,7 @@
 package fr.univnantes.vroom.core
 
-import fr.univnantes.vroom.materiel.{MaterielFixe, Materiel}
-import fr.univnantes.vroom.tarifs.TarifSalle
+import fr.univnantes.vroom.core.materiel.{MaterielFixe, Materiel}
+import fr.univnantes.vroom.core.tarifs.TarifSalle
 
 /**
  * Classe représentant une salle

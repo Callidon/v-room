@@ -1,6 +1,6 @@
 package fr.univnantes.vroom.core
 
-import fr.univnantes.vroom.tarifs.{TarifOrigine, TarifTitre, TarifMateriel}
+import fr.univnantes.vroom.core.tarifs.{TarifOrigine, TarifTitre, TarifMateriel}
 import org.scalatest.{BeforeAndAfter, FunSpec, Matchers}
 
 /**

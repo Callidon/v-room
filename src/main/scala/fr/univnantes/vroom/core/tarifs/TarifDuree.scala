@@ -1,4 +1,4 @@
-package fr.univnantes.vroom.tarifs
+package fr.univnantes.vroom.core.tarifs
 
 /**
  * Classe représentant un tarif lié à la durée d'un évènement

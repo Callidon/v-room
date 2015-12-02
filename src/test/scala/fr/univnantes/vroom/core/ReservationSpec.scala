@@ -1,8 +1,8 @@
 package fr.univnantes.vroom.core
 
 import fr.univnantes.vroom.TestsConstants
-import fr.univnantes.vroom.materiel.{MaterielFixe, MaterielMobile}
-import fr.univnantes.vroom.tarifs._
+import fr.univnantes.vroom.core.materiel.{MaterielFixe, MaterielMobile}
+import fr.univnantes.vroom.core.tarifs._
 import org.scalatest.{Matchers, FunSpec}
 
 /**
