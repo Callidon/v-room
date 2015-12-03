@@ -5,20 +5,20 @@ package fr.univnantes.vroom.datacontroller
   * @constructor Crée un nouveau gestionnaire de données
   * @param source La source de données avec laquelle le gestionnaire interagit
  */
-abstract class DataManager[T](source: DataSource) {
+abstract class DataManager(source: DataSource) {
 
   /**
     * Méthode récupérant une donnée de type T depuis la source de données
     * @param id L'identifiant unique de la donnée à récupérer
     * @return La donnée correspondant à l'identifiant
     */
-  def get(id : Int) : T
+  def get(id : Int) : Any
 
   /**
     * Méthode récupérant l'ensemble des données gérée par le gestionnaire
     * @return L'ensemble des données gérée par le gestionnaire
     */
-  def getAll() : Set[T]
+  def getAll() : Set[_]
 
   /**
     * Méthode insérant une donnée de type T dans la source de données

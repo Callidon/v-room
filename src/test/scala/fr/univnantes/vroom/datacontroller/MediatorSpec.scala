@@ -10,15 +10,57 @@ class MediatorSpec extends FunSpec with Matchers with BeforeAndAfter with MockFa
 
   describe("Mediator") {
 
-    // création des mock des DataManager
-    val adresseManager = mock[DataManager]
-    val batimentManager = mock[DataManager]
-    val demandeurManager = mock[DataManager]
-    val reservationManager = mock[DataManager]
-    val salleManager = mock[DataManager]
+    // création des mocks des DataManager
+    val dummySource = mock[DataSource]
+
+    class mockedManager extends DataManager(dummySource) {
+
+      override def get(id: Int): Any = Some
+
+      override def update(donnee: Any): Unit = print("dummy")
+
+      override def insert(donnee: Any): Unit = print("dummy")
+
+      override def delete(donnee: Any): Unit = print("dummy")
+
+      override def getAll(): Set[_] = Set(Some)
+    }
+
+    val adresseManager = mock[mockedManager]
+    val batimentManager = mock[mockedManager]
+    val demandeurManager = mock[mockedManager]
+    val reservationManager = mock[mockedManager]
+    val salleManager = mock[mockedManager]
 
     // on crée le mediator
-    val mediator = new Mediator(adresseManager, batimentManager, demandeurManager, reservationManager, salleManager)
+    val mediator = new Mediator()
+    mediator.registerManager("Adresse", adresseManager)
+    mediator.registerManager("Batiment", batimentManager)
+    mediator.registerManager("Demandeur", demandeurManager)
+    mediator.registerManager("Reservation", reservationManager)
+    mediator.registerManager("Salle", salleManager)
+
+    describe("#get") {
+
+      it("should call the correct manager") {
+        // TODO
+      }
+
+      it("should reject an object of unsupported type") {
+        // TODO
+      }
+    }
+
+    describe("#getAll") {
+
+      it("should call the correct manager") {
+        // TODO
+      }
+
+      it("should reject an object of unsupported type") {
+        // TODO
+      }
+    }
 
     describe("#insert") {
 
@@ -38,10 +80,10 @@ class MediatorSpec extends FunSpec with Matchers with BeforeAndAfter with MockFa
         mediator.insert(TestsConstants.salle)
       }
 
-      it("should reject the object of unsupported type") {
+      it("should reject an object of unsupported type") {
         val unsupported = new Date()
 
-        an [IllegalArgumentException] should be thrownBy mediator.insert(unsupported)
+        an [NoSuchElementException] should be thrownBy mediator.insert(unsupported)
       }
     }
 
@@ -63,10 +105,10 @@ class MediatorSpec extends FunSpec with Matchers with BeforeAndAfter with MockFa
         mediator.update(TestsConstants.salle)
       }
 
-      it("should reject the object of unsupported type") {
+      it("should reject an object of unsupported type") {
         val unsupported = new Date()
 
-        an [IllegalArgumentException] should be thrownBy mediator.update(unsupported)
+        an [NoSuchElementException] should be thrownBy mediator.update(unsupported)
       }
     }
 
@@ -88,10 +130,10 @@ class MediatorSpec extends FunSpec with Matchers with BeforeAndAfter with MockFa
         mediator.delete(TestsConstants.salle)
       }
 
-      it("should reject the object of unsupported type") {
+      it("should reject an object of unsupported type") {
         val unsupported = new Date()
 
-        an [IllegalArgumentException] should be thrownBy mediator.delete(unsupported)
+        an [NoSuchElementException] should be thrownBy mediator.delete(unsupported)
       }
     }
   }

@@ -1,64 +1,59 @@
 package fr.univnantes.vroom.datacontroller
 
-
-import fr.univnantes.vroom.core._;
-
 /**
  * Classe représentant un médiateur chargé de rediriger les données vers
  * les classes chargée de leur persistance dans la base de données
  * @constructor Crée un nouveau médiateur
- * @param adresseManager Le gestionnaire de données pour les objets de type Adresse
- * @param batimentManager Le gestionnaire de données pour les objets de type Batiment
- * @param reservationManager Le gestionnaire de données pour les objets de type Reservation
- * @param salleManager Le gestionnaire de données pour les objets de type Salle
  */
-class Mediator(adresseManager : DataManager[Adresse],
-               batimentManager : DataManager[Batiment],
-               demandeurManager : DataManager[Demandeur],
-               reservationManager : DataManager[Reservation],
-               salleManager : DataManager[Salle] ) {
+class Mediator() {
 
+  // Collection des gestionnaires utilisés par le médiateur
+  private var _managers : Map[String, DataManager] = Map[String,DataManager]()
+
+  /**
+    * Méthode qui enregistre un gestionnaire pour un type de donnée
+    * @param manager Le gestionnaire que l'on veut enregistrer
+    */
+  def registerManager(type_donnee : String, manager : DataManager) : Unit = _managers += (type_donnee -> manager)
+
+  /**
+    * Méthode qui récupère un gestionnaire pour un type de donnée
+    * @param type_donnee Le type de donnée que gère le gestionnaire que l'on veut récupérer
+    * @return Le gestionnaire qui gère le type de donnée voulue
+    */
+  def getManager(type_donnee : String) : DataManager = _managers(type_donnee)
+
+  /**
+    * Méthode récupérant une donnée d'un type précis via le bon gestionnaire
+    * @param id L'identifiant unique de la donnée
+    * @param type_donnee Le type de la donnée
+    * @return La donnée correspondant à l'identifiant
+    */
+  def get(id : Int, type_donnee : String) : Any = getManager(type_donnee).get(id)
+
+  /**
+    * Méthode récupérant toutes données pour un type précis via le bon gestionnaire
+    * @param type_donnee Le type des données à récupérer
+    * @return L'esenbmel des données correspondant au type précisé
+    */
+  def getAll(type_donnee : String) : Set[_] = getManager(type_donnee).getAll()
 
   /**
    * Méthode effectuant l'insertion d'une donnée dans la source de données via le bon gestionnaire
    * @param donnee La donnée à insérer
-   * @throws IllegalArgumentException
    */
-  def insert(donnee : Any) : Unit = donnee match {
-    case _ : Adresse => adresseManager.insert(donnee)
-    case _ : Batiment => batimentManager.insert(donnee)
-    case _ : Demandeur => demandeurManager.insert(donnee)
-    case _ : Reservation => reservationManager.insert(donnee)
-    case _ : Salle => salleManager.insert(donnee)
-    case _ => throw new IllegalArgumentException("Type d'objet non supporté par le médiateur")
-  }
+  def insert(donnee : Any) : Unit = getManager(donnee.getClass.getSimpleName).insert(donnee)
 
   /**
    * Méthode effectuant la mise à jour d'une donnée dans la source de données via le bon gestionnaire
    * @param donnee La donnée à mettre à jour
-   * @throws IllegalArgumentException
    */
-  def update(donnee : Any) : Unit = donnee match {
-    case _ : Adresse => adresseManager.update(donnee)
-    case _ : Batiment => batimentManager.update(donnee)
-    case _ : Demandeur => demandeurManager.update(donnee)
-    case _ : Reservation => reservationManager.update(donnee)
-    case _ : Salle => salleManager.update(donnee)
-    case _ => throw new IllegalArgumentException("Type d'objet non supporté par le médiateur")
-  }
+  def update(donnee : Any) : Unit = getManager(donnee.getClass.getSimpleName).update(donnee)
 
   /**
    * Méthode effectuant la suppression d'une donnée dans la source de données via le bon gestionnaire
    * @param donnee La donnée à supprimer
-   * @throws IllegalArgumentException
    */
-  def delete(donnee : Any) : Unit = donnee match {
-    case _ : Adresse => adresseManager.delete(donnee)
-    case _ : Batiment => batimentManager.delete(donnee)
-    case _ : Demandeur => demandeurManager.delete(donnee)
-    case _ : Reservation => reservationManager.delete(donnee)
-    case _ : Salle => salleManager.delete(donnee)
-    case _ => throw new IllegalArgumentException("Type d'objet non supporté par le médiateur")
-  }
+  def delete(donnee : Any) : Unit = getManager(donnee.getClass.getSimpleName).delete(donnee)
 
 }
