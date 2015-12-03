@@ -12,11 +12,12 @@ import fr.univnantes.vroom.core._;
  * @param reservationManager Le gestionnaire de données pour les objets de type Reservation
  * @param salleManager Le gestionnaire de données pour les objets de type Salle
  */
-class Mediator(adresseManager : DataManager,
-               batimentManager : DataManager,
-               demandeurManager : DataManager,
-               reservationManager : DataManager,
-               salleManager : DataManager ) {
+class Mediator(adresseManager : DataManager[Adresse],
+               batimentManager : DataManager[Batiment],
+               demandeurManager : DataManager[Demandeur],
+               reservationManager : DataManager[Reservation],
+               salleManager : DataManager[Salle] ) {
+
 
   /**
    * Méthode effectuant l'insertion d'une donnée dans la source de données via le bon gestionnaire
