@@ -6,7 +6,7 @@ import fr.univnantes.vroom.datacontroller.Mediator
 /**
  * Classe représentant l'environnement d'exécution du logiciel
  */
-class Systeme(val mediator : Mediator) {
+class Systeme() {
 
   private var _salles : Set[Salle] = Set()
 
