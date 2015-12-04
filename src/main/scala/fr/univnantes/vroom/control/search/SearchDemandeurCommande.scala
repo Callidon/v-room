@@ -6,10 +6,8 @@ import fr.univnantes.vroom.core.{Demandeur, Systeme}
 /**
  * Created by E122371M on 30/11/15.
  */
-class SearchDemandeurCommande(
-                                 system : Systeme,
-                                 search_pred : (Demandeur) => Boolean
-                                 ) extends Command[Set[Demandeur]](system) {
+class SearchDemandeurCommande(system : Systeme,
+                              search_pred : (Demandeur) => Boolean) extends Command[Set[Demandeur]](system) {
   /**
    * Méthode exécutant la commande contre le système
    */

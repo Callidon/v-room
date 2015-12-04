@@ -6,10 +6,8 @@ import fr.univnantes.vroom.core.{Salle, Systeme}
 /**
  * EXIGENCE FONCTIONNELLE UC2.2
  */
-class SearchSalleCommande(
-                           system : Systeme,
-                           search_pred : (Salle) => Boolean
-                           ) extends Command[Set[Salle]](system) {
+class SearchSalleCommande(system : Systeme,
+                          search_pred : (Salle) => Boolean) extends Command[Set[Salle]](system) {
   /**
    * Méthode exécutant la commande contre le système
    */

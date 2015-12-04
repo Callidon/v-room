@@ -2,13 +2,15 @@ package fr.univnantes.vroom.control.update
 
 import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.{Batiment, Systeme}
+import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
   * EXIGENCE FONCTIONNELLE UC3.3
   */
-class UpdateBatimentCommande (system : Systeme,
-                              ancien_batiment : Batiment,
-                              nouveau_batiment : Batiment ) extends Command[Unit](system) {
+class UpdateBatimentCommande(system : Systeme,
+                             mediator: Mediator,
+                             ancien_batiment : Batiment,
+                             nouveau_batiment : Batiment ) extends Command[Unit](system) {
 
   /**
     * Méthode exécutant la commande contre le système
@@ -16,11 +18,11 @@ class UpdateBatimentCommande (system : Systeme,
   override def execute(): Unit = {
     //On supprime l'ancienne version
     system.popBatiment(ancien_batiment)
-    system.mediator.delete(ancien_batiment)
+    mediator.delete(ancien_batiment)
 
     //On ajoute la nouvelle
     system.addBatiment(nouveau_batiment)
-    system.mediator.insert(nouveau_batiment)
+    mediator.insert(nouveau_batiment)
 
   }
 }

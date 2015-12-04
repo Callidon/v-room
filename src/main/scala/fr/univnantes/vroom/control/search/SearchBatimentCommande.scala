@@ -6,10 +6,8 @@ import fr.univnantes.vroom.core.{Batiment, Systeme}
 /**
  * EXIGENCE FONCTIONNELLE UC3.2
  */
-class SearchBatimentCommande(
-                                 system : Systeme,
-                                 search_pred : (Batiment) => Boolean
-                                 ) extends Command[Set[Batiment]](system) {
+class SearchBatimentCommande( system : Systeme,
+                              search_pred : (Batiment) => Boolean) extends Command[Set[Batiment]](system) {
   /**
    * Méthode exécutant la commande contre le système
    */
