@@ -4,6 +4,7 @@ import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.{Reservation, Systeme}
 
 /**
+  * EXIGENCE FONCTIONNELLE UC1.1
  * Classe repésentant la commande ajoutant une reservation au système
  */
 class ReserverCommande(system : Systeme,

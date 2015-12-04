@@ -4,9 +4,9 @@ import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.{Reservation, Systeme}
 
 /**
-  * Created by folkvir on 27/11/15.
+  * EXIGENCE FONCTIONNELLE UC1.3
   */
-class AnnulerReservationSalleCommande (
+class AnnulerReservationCommande(
                                         system : Systeme,
                                         reservation : Reservation
                                       ) extends Command[Unit](system) {

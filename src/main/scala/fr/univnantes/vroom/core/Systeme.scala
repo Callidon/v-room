@@ -1,5 +1,6 @@
 package fr.univnantes.vroom.core
 
+import fr.univnantes.vroom.core.tarifs.{Tarif, TarifSalle}
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
@@ -14,6 +15,8 @@ class Systeme(val mediator : Mediator) {
   private var _batiments : Set[Batiment] = Set()
 
   private var _demandeurs : Set[Demandeur] = Set()
+
+  private var _typesDeTarif : Set[Tarif] = Set()
 
   /**
    * Ajoute une nouvelle salle
@@ -69,32 +72,53 @@ class Systeme(val mediator : Mediator) {
    */
   def popDemandeur(demandeur: Demandeur) : Unit = _demandeurs -= demandeur
 
+
   /**
-   *
-   * @param predicat
+    * Ajoute une nouvelle salle
+    * @param tarif La salle à ajouter
+    */
+  def addTarif(tarif: Tarif): Unit = _typesDeTarif += tarif
+
+  /**
+    * Supprime une salle
+    * @param tarif La salle à supprimer
+    */
+  def popTarif(tarif: Tarif) : Unit = _typesDeTarif -= tarif
+
+  /**
+   * Recherche une Reservation suivant un predicat
+   * @param predicat Predicat de recherche d'une reservation, renvoi un booleen
    * @return
    */
   def searchReservation( predicat : (Reservation) => Boolean) : Set[Reservation] = _reservations.filter(predicat)
 
   /**
-   *
-   * @param predicat
+   * Recherche une Salle suivant un predicat
+   * @param predicat Predicat de recherche d'une salle, renvoi un booleen
    * @return
    */
   def searchSalle( predicat : (Salle) => Boolean) : Set[Salle] = _salles.filter(predicat)
 
   /**
-   *
-   * @param predicat
+   * Recherche un Batiment suivant un predicat
+   * @param predicat Predicat de recherche d'un batiment, renvoi un booleen
    * @return
    */
   def searchBatiment( predicat : (Batiment) => Boolean) : Set[Batiment] = _batiments.filter(predicat)
 
   /**
-   *
-   * @param predicat
+   * Recherche un Demandeur suivant un predicat
+   * @param predicat Predicat de recherche d'un Demandeur, renvoi un booleen
    * @return
    */
   def searchDemandeur( predicat : (Demandeur) => Boolean) : Set[Demandeur] = _demandeurs.filter(predicat)
+
+  /**
+    * Recherche une Tarif suivant un predicat
+    * @param predicat Predicat de recherche d'un tarif, renvoi un booleen
+    * @return
+    */
+  def searchTarif( predicat : (Tarif) => Boolean) : Set[Tarif] = _typesDeTarif.filter(predicat)
+
 
 }

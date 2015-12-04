@@ -4,7 +4,7 @@ import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.{Batiment, Systeme}
 
 /**
-  * Created by folkvir on 03/12/15.
+  * EXIGENCE FONCTIONNELLE UC3.3
   */
 class UpdateBatimentCommande (system : Systeme,
                               ancien_batiment : Batiment,

@@ -4,7 +4,7 @@ import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.{Salle, Systeme}
 
 /**
- * Created by E122371M on 30/11/15.
+ * EXIGENCE FONCTIONNELLE UC2.2
  */
 class SearchSalleCommande(
                            system : Systeme,

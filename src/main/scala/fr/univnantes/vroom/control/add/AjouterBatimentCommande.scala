@@ -4,6 +4,7 @@ import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.{Batiment, Systeme}
 
 /**
+  * EXIGENCE FONCTIONNELLE UC3.1
  * Classe repésentant la commande ajoutant un batiment au système
  */
 class AjouterBatimentCommande(system : Systeme,

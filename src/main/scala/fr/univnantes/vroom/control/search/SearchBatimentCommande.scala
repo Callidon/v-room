@@ -4,7 +4,7 @@ import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.{Batiment, Systeme}
 
 /**
- * Created by E122371M on 30/11/15.
+ * EXIGENCE FONCTIONNELLE UC3.2
  */
 class SearchBatimentCommande(
                                  system : Systeme,
