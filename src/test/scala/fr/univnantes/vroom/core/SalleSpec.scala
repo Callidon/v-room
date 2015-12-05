@@ -2,8 +2,7 @@ package fr.univnantes.vroom.core
 
 import fr.univnantes.vroom.TestsConstants
 import fr.univnantes.vroom.core.materiel.MaterielFixe
-import fr.univnantes.vroom.core.tarifs.TarifMateriel
-import org.scalatest.{Matchers, FunSpec}
+import org.scalatest.{FunSpec, Matchers}
 
 /**
  * Cas de tests pour la classe salle

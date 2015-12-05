@@ -2,8 +2,7 @@ package fr.univnantes.vroom.core
 
 import fr.univnantes.vroom.TestsConstants
 import fr.univnantes.vroom.core.materiel.{MaterielFixe, MaterielMobile}
-import fr.univnantes.vroom.core.tarifs._
-import org.scalatest.{Matchers, FunSpec}
+import org.scalatest.{FunSpec, Matchers}
 
 /**
   * Cas de tests pour la classe Reservation
@@ -32,7 +31,7 @@ class ReservationSpec extends FunSpec with Matchers {
         reservation.calculTarif() should be (amount + 40.0)
       }
 
-      it("should calculate the correct amount with some rooms with some furniture") {
+      it("should calculate the correct amount with some rooms & some furnitures") {
         val amount = reservation.salle.calculerTarif() + reservation.demandeur.calculerTarif() + 15.0 + 60.0 + 15.0 + 40.0
         val first_materiel = new MaterielFixe(2, "Meuble standard", TestsConstants.tarif_materiel)
         val second_materiel = new MaterielFixe(3, "Autre meuble standard", TestsConstants.tarif_materiel)

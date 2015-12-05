@@ -3,11 +3,13 @@ package fr.univnantes.vroom.datacontroller
 import java.util.Date
 
 import fr.univnantes.vroom.TestsConstants
-import fr.univnantes.vroom.core.{Batiment, Adresse}
-import org.scalatest.{BeforeAndAfter, Matchers, FunSpec}
 import org.scalamock.scalatest.MockFactory
+import org.scalatest.{FunSpec, Matchers}
 
-class MediatorSpec extends FunSpec with Matchers with BeforeAndAfter with MockFactory {
+/**
+  * Cas de tests pour la classe Mediator
+  */
+class MediatorSpec extends FunSpec with Matchers with MockFactory {
 
   describe("Mediator") {
 
@@ -36,7 +38,7 @@ class MediatorSpec extends FunSpec with Matchers with BeforeAndAfter with MockFa
         mediator.get(10, "Batiment")
       }
 
-      it("should reject an object of unsupported type") {
+      it("should reject an object of an unsupported type") {
         an [NoSuchElementException] should be thrownBy mediator.get(10, "Date")
       }
     }
@@ -53,7 +55,7 @@ class MediatorSpec extends FunSpec with Matchers with BeforeAndAfter with MockFa
         mediator.getAll("Batiment")
       }
 
-      it("should reject an object of unsupported type") {
+      it("should reject an object of an unsupported type") {
         an [NoSuchElementException] should be thrownBy mediator.getAll("Date")
       }
     }
@@ -70,7 +72,7 @@ class MediatorSpec extends FunSpec with Matchers with BeforeAndAfter with MockFa
         mediator.insert(TestsConstants.batiment)
       }
 
-      it("should reject an object of unsupported type") {
+      it("should reject an object of an unsupported type") {
         val unsupported = new Date()
 
         an [NoSuchElementException] should be thrownBy mediator.insert(unsupported)
@@ -89,7 +91,7 @@ class MediatorSpec extends FunSpec with Matchers with BeforeAndAfter with MockFa
         mediator.update(TestsConstants.batiment)
       }
 
-      it("should reject an object of unsupported type") {
+      it("should reject an object of an unsupported type") {
         val unsupported = new Date()
 
         an [NoSuchElementException] should be thrownBy mediator.update(unsupported)
@@ -108,7 +110,7 @@ class MediatorSpec extends FunSpec with Matchers with BeforeAndAfter with MockFa
         mediator.delete(TestsConstants.batiment)
       }
 
-      it("should reject an object of unsupported type") {
+      it("should reject an object of an unsupported type") {
         val unsupported = new Date()
 
         an [NoSuchElementException] should be thrownBy mediator.delete(unsupported)

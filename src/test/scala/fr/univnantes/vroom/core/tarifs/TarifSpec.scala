@@ -1,6 +1,6 @@
 package fr.univnantes.vroom.core.tarifs
 
-import org.scalatest.{BeforeAndAfter, FunSpec, Matchers}
+import org.scalatest.{FunSpec, Matchers}
 
 /**
  * Cas de tests pour la classe Tarif

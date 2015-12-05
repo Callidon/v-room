@@ -1,7 +1,7 @@
 package fr.univnantes.vroom.core
 
-import fr.univnantes.vroom.core.tarifs.{TarifOrigine, TarifTitre, TarifMateriel}
-import org.scalatest.{BeforeAndAfter, FunSpec, Matchers}
+import fr.univnantes.vroom.core.tarifs.{TarifOrigine, TarifTitre}
+import org.scalatest.{FunSpec, Matchers}
 
 /**
   * Cas de tests pour la classe Demandeur

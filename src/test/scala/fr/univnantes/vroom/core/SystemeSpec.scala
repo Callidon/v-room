@@ -2,9 +2,12 @@ package fr.univnantes.vroom.core
 
 import fr.univnantes.vroom.TestsConstants
 import fr.univnantes.vroom.core.tarifs.Tarif
-import org.scalatest.{BeforeAndAfter, Matchers, FunSpec}
+import org.scalatest.{FunSpec, Matchers}
 
-class SystemeSpec extends FunSpec with Matchers with BeforeAndAfter {
+/**
+  * Cas de tests pour la classe Systeme
+  */
+class SystemeSpec extends FunSpec with Matchers {
 
   describe("Systeme") {
 

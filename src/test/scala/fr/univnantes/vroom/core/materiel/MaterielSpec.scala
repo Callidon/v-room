@@ -1,7 +1,7 @@
 package fr.univnantes.vroom.core.materiel
 
 import fr.univnantes.vroom.core.tarifs.TarifMateriel
-import org.scalatest.{BeforeAndAfter, FunSpec, Matchers}
+import org.scalatest.{FunSpec, Matchers}
 
 /**
   * Cas de tests pour la classe Materiel

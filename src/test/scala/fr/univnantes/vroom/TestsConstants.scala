@@ -6,8 +6,8 @@ import fr.univnantes.vroom.core._
 import fr.univnantes.vroom.core.tarifs._
 
 /**
- * Ensemble de constantes pour les tests unitaires
- */
+  * Ensemble de constantes pour les cas de tests
+  */
 object TestsConstants {
 
   val adresse = new Adresse("5B", "Rue du port", "44000", "Nantes")
