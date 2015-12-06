@@ -18,11 +18,10 @@ class UpdateBatimentCommande(system : Systeme,
   override def execute(): Unit = {
     //On supprime l'ancienne version
     system.popBatiment(ancien_batiment)
-    mediator.delete(ancien_batiment)
-
     //On ajoute la nouvelle
     system.addBatiment(nouveau_batiment)
-    mediator.insert(nouveau_batiment)
+
+    mediator.update(nouveau_batiment)
 
   }
 }

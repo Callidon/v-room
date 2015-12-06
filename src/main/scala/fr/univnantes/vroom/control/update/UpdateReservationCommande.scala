@@ -15,11 +15,10 @@ class UpdateReservationCommande(system : Systeme,
   override def execute(): Unit = {
     //On supprime l'ancienne version
     system.popReservation(ancien_reservation)
-    mediator.delete(ancien_reservation)
-
     //On ajoute la nouvelle
     system.addReservation(nouveau_reservation)
-    mediator.insert(nouveau_reservation)
+
+    mediator.update(nouveau_reservation)
 
   }
 }
