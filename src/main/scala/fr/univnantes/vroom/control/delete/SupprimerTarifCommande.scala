@@ -1,8 +1,8 @@
 package fr.univnantes.vroom.control.delete
 
 import fr.univnantes.vroom.control.Command
-import fr.univnantes.vroom.core.Systeme
-import fr.univnantes.vroom.core.persistable.tarifs.Tarif
+import fr.univnantes.vroom.core.dto.tarifs.TarifDTO
+import fr.univnantes.vroom.core.{DTOManager, Systeme}
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
@@ -10,9 +10,10 @@ import fr.univnantes.vroom.datacontroller.Mediator
   */
 class SupprimerTarifCommande( system : Systeme,
                               mediator: Mediator,
-                              tarif : Tarif)extends Command[Unit](system){
+                              tarif : TarifDTO)extends Command[Unit](system){
 
   override def execute() : Unit = {
+    DTOManager.deleteDto(tarif.code)
     system.popTarif(tarif)
     mediator.delete(tarif)
   }

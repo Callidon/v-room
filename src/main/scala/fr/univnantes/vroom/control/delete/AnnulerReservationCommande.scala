@@ -2,7 +2,7 @@ package fr.univnantes.vroom.control.delete
 
 import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.Systeme
-import fr.univnantes.vroom.core.persistable.Reservation
+import fr.univnantes.vroom.core.dto.ReservationDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
@@ -10,7 +10,7 @@ import fr.univnantes.vroom.datacontroller.Mediator
   */
 class AnnulerReservationCommande( system : Systeme,
                                   mediator : Mediator,
-                                  reservation : Reservation) extends Command[Unit](system) {
+                                  reservation : ReservationDTO) extends Command[Unit](system) {
 
   override def execute() : Unit = {
     system.popReservation(reservation)

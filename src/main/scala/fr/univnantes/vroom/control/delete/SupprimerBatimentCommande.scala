@@ -1,8 +1,8 @@
 package fr.univnantes.vroom.control.delete
 
 import fr.univnantes.vroom.control.Command
-import fr.univnantes.vroom.core.Systeme
-import fr.univnantes.vroom.core.persistable.Batiment
+import fr.univnantes.vroom.core.dto.BatimentDTO
+import fr.univnantes.vroom.core.{DTOManager, Systeme}
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
@@ -10,8 +10,9 @@ import fr.univnantes.vroom.datacontroller.Mediator
   */
 class SupprimerBatimentCommande(system : Systeme,
                                 mediator: Mediator,
-                                batiment : Batiment) extends Command[Unit](system) {
+                                batiment : BatimentDTO) extends Command[Unit](system) {
   override def execute() : Unit = {
+    DTOManager.deleteDto(batiment.no_bat)
     system.popBatiment(batiment)
     mediator.delete(batiment)
   }
