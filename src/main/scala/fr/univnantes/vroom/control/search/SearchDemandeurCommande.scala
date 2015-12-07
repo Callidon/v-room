@@ -1,7 +1,8 @@
 package fr.univnantes.vroom.control.search
 
 import fr.univnantes.vroom.control.Command
-import fr.univnantes.vroom.core.{Demandeur, Systeme}
+import fr.univnantes.vroom.core.Systeme
+import fr.univnantes.vroom.core.persistable.Demandeur
 
 /**
  * Created by E122371M on 30/11/15.

@@ -1,7 +1,8 @@
 package fr.univnantes.vroom.control.delete
 
 import fr.univnantes.vroom.control.Command
-import fr.univnantes.vroom.core.{Salle, Systeme}
+import fr.univnantes.vroom.core.Systeme
+import fr.univnantes.vroom.core.persistable.Salle
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**

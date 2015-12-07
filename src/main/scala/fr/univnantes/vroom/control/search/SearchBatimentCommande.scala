@@ -1,7 +1,8 @@
 package fr.univnantes.vroom.control.search
 
 import fr.univnantes.vroom.control.Command
-import fr.univnantes.vroom.core.{Batiment, Systeme}
+import fr.univnantes.vroom.core.Systeme
+import fr.univnantes.vroom.core.persistable.Batiment
 
 /**
  * EXIGENCE FONCTIONNELLE UC3.2

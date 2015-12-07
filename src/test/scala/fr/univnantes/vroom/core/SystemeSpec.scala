@@ -1,7 +1,8 @@
 package fr.univnantes.vroom.core
 
 import fr.univnantes.vroom.TestsConstants
-import fr.univnantes.vroom.core.tarifs.Tarif
+import fr.univnantes.vroom.core.persistable.{Salle, Reservation, Demandeur, Batiment}
+import fr.univnantes.vroom.core.persistable.tarifs.Tarif
 import org.scalatest.{FunSpec, Matchers}
 
 /**

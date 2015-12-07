@@ -1,7 +1,7 @@
 package fr.univnantes.vroom.control.search
 
 import fr.univnantes.vroom.control.Command
-import fr.univnantes.vroom.core.tarifs.Tarif
+import fr.univnantes.vroom.core.persistable.tarifs.Tarif
 import fr.univnantes.vroom.core.Systeme
 
 /**

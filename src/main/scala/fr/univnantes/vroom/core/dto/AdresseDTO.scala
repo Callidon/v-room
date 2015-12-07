@@ -1,4 +1,4 @@
-package fr.univnantes.vroom.control.dto
+package fr.univnantes.vroom.core.dto
 
 /**
  * Created by E122371M on 07/12/15.

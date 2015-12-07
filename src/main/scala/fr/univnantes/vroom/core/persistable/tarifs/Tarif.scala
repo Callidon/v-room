@@ -1,7 +1,7 @@
-package fr.univnantes.vroom.core.tarifs
+package fr.univnantes.vroom.core.persistable.tarifs
 
-import fr.univnantes.vroom.control.dto.TarifDTO
-import fr.univnantes.vroom.core.Persistable
+import fr.univnantes.vroom.core.dto.TarifDTO
+import fr.univnantes.vroom.core.persistable.Persistable
 
 /**
  * Classe abstraite représentant un tarif

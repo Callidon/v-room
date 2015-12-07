@@ -1,6 +1,7 @@
-package fr.univnantes.vroom.core
+package fr.univnantes.vroom.core.persistable
 
-import fr.univnantes.vroom.core.tarifs.{TarifTitre, TarifOrigine}
+import fr.univnantes.vroom.core.dto.{DataTransfertObject, DemandeurDTO}
+import fr.univnantes.vroom.core.persistable.tarifs.{TarifOrigine, TarifTitre}
 
 /**
  * Classe représentant un démandeur, qui cherche à réserver une salle
@@ -16,7 +17,9 @@ case class Demandeur( var no_dem: Int,
                       var nom: String,
                       var adresse: Adresse,
                       var origine: TarifOrigine,
-                      var titre: TarifTitre) {
+                      var titre: TarifTitre) extends Persistable {
+
+  override def toDTO() : DataTransfertObject = new DemandeurDTO(no_dem, nom, adresse.toDTO(), origine.toDTO(), titre.toDTO())
 
     override def toString : String = " Demandeur : "+
       " \n  | Numero du demandeur :"+no_dem+

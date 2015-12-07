@@ -1,7 +1,8 @@
 package fr.univnantes.vroom.core
 
-import fr.univnantes.vroom.control.dto.SalleDTO
-import fr.univnantes.vroom.core.tarifs.{Tarif, TarifSalle}
+import fr.univnantes.vroom.core.dto.SalleDTO
+import fr.univnantes.vroom.core.persistable._
+import fr.univnantes.vroom.core.persistable.tarifs.{Tarif, TarifSalle}
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
@@ -23,25 +24,25 @@ class Systeme() {
    * Ajoute une nouvelle salle
    * @param salle La salle à ajouter
    */
-  def addSalle(salle: SalleDTO): Unit = _salles += DTOManager.dtoToAny(salle.no_salle)
+  def addSalle(salle: SalleDTO): Unit = _salles += DTOManager.dtoToObject(salle.no_salle)
 
   /**
    * Supprime une salle
    * @param salle La salle à supprimer
    */
-  def popSalle(salle: Salle) : Unit = _salles -= salle
+  def popSalle(salle: Salle) : Unit = _salles -= DTOManager.dtoToObject(salle.no_salle)
 
   /**
    * Ajoute une nouvelle réservation
    * @param reservation La réservation à ajouter
    */
-  def addReservation(reservation : Reservation): Unit = _reservations += reservation
+  def addReservation(reservation : Reservation): Unit = _reservations += DTOManager.dtoToObject(reservation.ref_resa)
 
   /**
    * Supprime une réservation
    * @param reservation La réservation à supprimer
    */
-  def popReservation(reservation : Reservation) : Unit = _reservations -= reservation
+  def popReservation(reservation : Reservation) : Unit = _reservations -= DTOManager.dtoToObject(reservation.ref_resa)
 
   /**
     * Affiche les informations relative aux réservations
@@ -53,38 +54,38 @@ class Systeme() {
    * Ajoute un nouveau batiment
    * @param batiment Le batiment à ajouter
    */
-  def addBatiment(batiment: Batiment): Unit = _batiments += batiment
+  def addBatiment(batiment: Batiment): Unit = _batiments += DTOManager.dtoToObject(batiment.no_bat)
 
   /**
    * Supprime un batiment
    * @param batiment Le batiment à supprimer
    */
-  def popBatiment(batiment: Batiment) : Unit = _batiments -= batiment
+  def popBatiment(batiment: Batiment) : Unit = _batiments -= DTOManager.dtoToObject(batiment.no_bat)
 
   /**
    * Ajoute un nouveau demandeur
    * @param demandeur La réservation à ajouter
    */
-  def addDemandeur(demandeur: Demandeur): Unit = _demandeurs += demandeur
+  def addDemandeur(demandeur: Demandeur): Unit = _demandeurs += DTOManager.dtoToObject(demandeur.no_dem)
 
   /**
    * Supprime un demandeur
    * @param demandeur Le demandeur à supprimer
    */
-  def popDemandeur(demandeur: Demandeur) : Unit = _demandeurs -= demandeur
+  def popDemandeur(demandeur: Demandeur) : Unit = _demandeurs -= DTOManager.dtoToObject(demandeur.no_dem)
 
 
   /**
     * Ajoute une nouvelle salle
     * @param tarif La salle à ajouter
     */
-  def addTarif(tarif: Tarif): Unit = _typesDeTarif += tarif
+  def addTarif(tarif: Tarif): Unit = _typesDeTarif += DTOManager.dtoToObject(tarif.code)
 
   /**
     * Supprime une salle
     * @param tarif La salle à supprimer
     */
-  def popTarif(tarif: Tarif) : Unit = _typesDeTarif -= tarif
+  def popTarif(tarif: Tarif) : Unit = _typesDeTarif -= DTOManager.dtoToObject(tarif.code)
 
   /**
    * Recherche une Reservation suivant un predicat

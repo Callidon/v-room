@@ -1,8 +1,4 @@
-package fr.univnantes.vroom.core
-
-import fr.univnantes.vroom.control.dto.SalleDTO
-import fr.univnantes.vroom.core.materiel.{MaterielFixe, Materiel}
-import fr.univnantes.vroom.core.tarifs.TarifSalle
+package fr.univnantes.vroom.core.persistable
 
 /**
  * Classe représentant une salle

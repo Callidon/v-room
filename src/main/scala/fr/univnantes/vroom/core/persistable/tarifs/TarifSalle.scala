@@ -1,14 +1,14 @@
-package fr.univnantes.vroom.core.tarifs
+package fr.univnantes.vroom.core.persistable.tarifs
 
 /**
- * Classe représentant un tarif lié au titre du demandeur
+ * Classe représentant un tarif lié à un type de salle
  *
- * @constructor Crée un nouveau tarif lié au titre du demandeur
+ * @constructor Crée un nouveau tarif lié à une salle
  * @param code Le code qui représente de manière unique la tarif
  * @param libelle Le nom associé à ce tarif
  * @param tarif La valeur du tarif
  */
-class TarifTitre(code: Int,
+class TarifSalle(code: Int,
                  libelle: String,
                  tarif: Double) extends Tarif(code, libelle, tarif) {
 

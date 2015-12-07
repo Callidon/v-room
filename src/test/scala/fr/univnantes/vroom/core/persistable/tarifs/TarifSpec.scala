@@ -1,4 +1,4 @@
-package fr.univnantes.vroom.core.tarifs
+package fr.univnantes.vroom.core.persistable.tarifs
 
 import org.scalatest.{FunSpec, Matchers}
 

@@ -1,6 +1,6 @@
-package fr.univnantes.vroom.core
+package fr.univnantes.vroom.core.persistable
 
-import fr.univnantes.vroom.control.dto.AdresseDTO
+import fr.univnantes.vroom.core.dto.{AdresseDTO, DataTransfertObject}
 
 /**
  * Classe représentant une adresse
@@ -15,6 +15,8 @@ case class Adresse( var numero: String,
                     var adresse: String,
                     var code: String,
                     var ville: String ) extends Persistable {
+
+  override def toDTO(): DataTransfertObject = new AdresseDTO(numero, adresse, code, ville)
 
   /**
     * Affiche les informations de l'adresse

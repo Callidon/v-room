@@ -1,5 +1,6 @@
 package fr.univnantes.vroom.core
 
+import fr.univnantes.vroom.core.persistable.Adresse
 import org.scalatest.{FunSpec, Matchers}
 
 /**

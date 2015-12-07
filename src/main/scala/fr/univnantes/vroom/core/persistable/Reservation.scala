@@ -1,9 +1,8 @@
-package fr.univnantes.vroom.core
+package fr.univnantes.vroom.core.persistable
 
-import java.util.Date
-
-import fr.univnantes.vroom.core.materiel.{MaterielMobile, Materiel}
-import fr.univnantes.vroom.core.tarifs.{TarifDuree, TarifManifestation}
+import fr.univnantes.vroom.core.dto.{DataTransfertObject, ReservationDTO}
+import fr.univnantes.vroom.core.persistable.materiel.{Materiel, MaterielMobile}
+import fr.univnantes.vroom.core.persistable.tarifs.{TarifDuree, TarifManifestation}
 
 /**
  * Classe représentant une réservation
@@ -18,12 +17,14 @@ import fr.univnantes.vroom.core.tarifs.{TarifDuree, TarifManifestation}
  * @param duree Le tarif lié à la durée de la réservation
  */
 case class Reservation( var ref_resa: Int,
-                        var date_resa: Date,
+                        var date_resa: String,
                         var montant: Double,
                         var salle: Salle,
                         var demandeur: Demandeur,
                         var manifestation: TarifManifestation,
-                        var duree: TarifDuree ) {
+                        var duree: TarifDuree ) extends Persistable {
+
+  override def toDTO() : DataTransfertObject = new ReservationDTO(ref_resa, date_resa, montant, salle.toDTO(), demandeur.toDTO(), manifestation.toDTO(), duree.toDTO())
 
   // Ensemble des matériels mobiles liées à la réservation
   private var _materiels_mobile : Set[Materiel] = Set()

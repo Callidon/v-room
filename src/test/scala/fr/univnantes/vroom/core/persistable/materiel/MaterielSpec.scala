@@ -1,6 +1,6 @@
-package fr.univnantes.vroom.core.materiel
+package fr.univnantes.vroom.core.persistable.materiel
 
-import fr.univnantes.vroom.core.tarifs.TarifMateriel
+import fr.univnantes.vroom.core.persistable.tarifs.TarifMateriel
 import org.scalatest.{FunSpec, Matchers}
 
 /**

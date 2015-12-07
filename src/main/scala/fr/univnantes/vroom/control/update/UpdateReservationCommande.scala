@@ -1,7 +1,8 @@
 package fr.univnantes.vroom.control.update
 
 import fr.univnantes.vroom.control.Command
-import fr.univnantes.vroom.core.{Reservation, Systeme}
+import fr.univnantes.vroom.core.Systeme
+import fr.univnantes.vroom.core.persistable.Reservation
 import fr.univnantes.vroom.datacontroller.Mediator
 
 class UpdateReservationCommande(system : Systeme,

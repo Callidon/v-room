@@ -1,7 +1,8 @@
 package fr.univnantes.vroom.control.search
 
 import fr.univnantes.vroom.control.Command
-import fr.univnantes.vroom.core.{Salle, Systeme}
+import fr.univnantes.vroom.core.Systeme
+import fr.univnantes.vroom.core.persistable.Salle
 
 /**
  * EXIGENCE FONCTIONNELLE UC2.2

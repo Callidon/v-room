@@ -1,6 +1,6 @@
 package fr.univnantes.vroom.datacontroller
 
-import fr.univnantes.vroom.control.dto.DataTransfertObject
+import fr.univnantes.vroom.core.dto.DataTransfertObject
 
 /**
  * Classe représentant un médiateur chargé de rediriger les données vers
