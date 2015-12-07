@@ -3,6 +3,7 @@ package fr.univnantes.vroom.datacontroller
 import java.util.Date
 
 import fr.univnantes.vroom.TestsConstants
+import fr.univnantes.vroom.database.DataSource
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{FunSpec, Matchers}
 

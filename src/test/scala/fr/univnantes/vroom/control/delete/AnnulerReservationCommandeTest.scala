@@ -4,7 +4,8 @@ import fr.univnantes.vroom.TestsConstants
 import fr.univnantes.vroom.control.delete.AnnulerReservationCommande
 import fr.univnantes.vroom.core.Systeme
 import fr.univnantes.vroom.core.persistable.Reservation
-import fr.univnantes.vroom.datacontroller.{DataManager, DataSource, Mediator}
+import fr.univnantes.vroom.database.DataSource
+import fr.univnantes.vroom.datacontroller.{DataManager, Mediator}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{FunSpec, Matchers}
 

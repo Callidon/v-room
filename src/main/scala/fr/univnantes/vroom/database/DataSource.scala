@@ -1,4 +1,4 @@
-package fr.univnantes.vroom.datacontroller
+package fr.univnantes.vroom.database
 
 /**
  * Classe représentant une source de données abstraite

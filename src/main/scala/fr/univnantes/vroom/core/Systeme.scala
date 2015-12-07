@@ -1,9 +1,8 @@
 package fr.univnantes.vroom.core
 
-import fr.univnantes.vroom.core.dto.SalleDTO
+import fr.univnantes.vroom.core.dto._
 import fr.univnantes.vroom.core.persistable._
-import fr.univnantes.vroom.core.persistable.tarifs.{Tarif, TarifSalle}
-import fr.univnantes.vroom.datacontroller.Mediator
+import fr.univnantes.vroom.core.persistable.tarifs.Tarif
 
 /**
  * Classe représentant l'environnement d'exécution du logiciel
@@ -30,19 +29,19 @@ class Systeme() {
    * Supprime une salle
    * @param salle La salle à supprimer
    */
-  def popSalle(salle: Salle) : Unit = _salles -= DTOManager.dtoToObject(salle.no_salle)
+  def popSalle(salle: SalleDTO) : Unit = _salles -= DTOManager.dtoToObject(salle.no_salle)
 
   /**
    * Ajoute une nouvelle réservation
    * @param reservation La réservation à ajouter
    */
-  def addReservation(reservation : Reservation): Unit = _reservations += DTOManager.dtoToObject(reservation.ref_resa)
+  def addReservation(reservation : ReservationDTO): Unit = _reservations += DTOManager.dtoToObject(reservation.ref_resa)
 
   /**
    * Supprime une réservation
    * @param reservation La réservation à supprimer
    */
-  def popReservation(reservation : Reservation) : Unit = _reservations -= DTOManager.dtoToObject(reservation.ref_resa)
+  def popReservation(reservation : ReservationDTO) : Unit = _reservations -= DTOManager.dtoToObject(reservation.ref_resa)
 
   /**
     * Affiche les informations relative aux réservations
@@ -54,73 +53,103 @@ class Systeme() {
    * Ajoute un nouveau batiment
    * @param batiment Le batiment à ajouter
    */
-  def addBatiment(batiment: Batiment): Unit = _batiments += DTOManager.dtoToObject(batiment.no_bat)
+  def addBatiment(batiment: BatimentDTO): Unit = _batiments += DTOManager.dtoToObject(batiment.no_bat)
 
   /**
    * Supprime un batiment
    * @param batiment Le batiment à supprimer
    */
-  def popBatiment(batiment: Batiment) : Unit = _batiments -= DTOManager.dtoToObject(batiment.no_bat)
+  def popBatiment(batiment: BatimentDTO) : Unit = _batiments -= DTOManager.dtoToObject(batiment.no_bat)
 
   /**
    * Ajoute un nouveau demandeur
    * @param demandeur La réservation à ajouter
    */
-  def addDemandeur(demandeur: Demandeur): Unit = _demandeurs += DTOManager.dtoToObject(demandeur.no_dem)
+  def addDemandeur(demandeur: DemandeurDTO): Unit = _demandeurs += DTOManager.dtoToObject(demandeur.no_dem)
 
   /**
    * Supprime un demandeur
    * @param demandeur Le demandeur à supprimer
    */
-  def popDemandeur(demandeur: Demandeur) : Unit = _demandeurs -= DTOManager.dtoToObject(demandeur.no_dem)
+  def popDemandeur(demandeur: DemandeurDTO) : Unit = _demandeurs -= DTOManager.dtoToObject(demandeur.no_dem)
 
 
   /**
     * Ajoute une nouvelle salle
     * @param tarif La salle à ajouter
     */
-  def addTarif(tarif: Tarif): Unit = _typesDeTarif += DTOManager.dtoToObject(tarif.code)
+  def addTarif(tarif: TarifDTO): Unit = _typesDeTarif += DTOManager.dtoToObject(tarif.code)
 
   /**
     * Supprime une salle
     * @param tarif La salle à supprimer
     */
-  def popTarif(tarif: Tarif) : Unit = _typesDeTarif -= DTOManager.dtoToObject(tarif.code)
+  def popTarif(tarif: TarifDTO) : Unit = _typesDeTarif -= DTOManager.dtoToObject(tarif.code)
 
   /**
-   * Recherche une Reservation suivant un predicat
-   * @param predicat Predicat de recherche d'une reservation, renvoi un booleen
-   * @return
+   * Recherche les réservations respectant un prédicat
+   * @param predicat Prédicat de recherche d'une reservation
+   * @return L'ensemble des réservations au format DTO respectant le prédicat
    */
-  def searchReservation( predicat : (Reservation) => Boolean) : Set[Reservation] = _reservations.filter(predicat)
+  def searchReservation( predicat : (ReservationDTO) => Boolean) : Set[ReservationDTO] = {
+    val muted_set : Set[ReservationDTO] = _reservations collect {
+      case reserv : Reservation => reserv.toDTO().asInstanceOf[ReservationDTO]
+    }
+
+    muted_set.filter(predicat)
+  }
 
   /**
-   * Recherche une Salle suivant un predicat
-   * @param predicat Predicat de recherche d'une salle, renvoi un booleen
-   * @return
+   * Recherche les salles respectant un prédicat
+   * @param predicat Prédicat de recherche d'une salle
+   * @return L'ensemble des salles au format DTO respectant le prédicat
    */
-  def searchSalle( predicat : (Salle) => Boolean) : Set[Salle] = _salles.filter(predicat)
+  def searchSalle( predicat : (SalleDTO) => Boolean) : Set[SalleDTO] = {
+    val muted_set : Set[SalleDTO] = _salles collect {
+      case salle : Salle => salle.toDTO().asInstanceOf[SalleDTO]
+    }
+
+    muted_set.filter(predicat)
+  }
 
   /**
-   * Recherche un Batiment suivant un predicat
-   * @param predicat Predicat de recherche d'un batiment, renvoi un booleen
-   * @return
+   * Recherche les bâtiments respectant un prédicat
+   * @param predicat Prédicat de recherche d'un bâtiment
+   * @return L'ensemble des bâtiments au format DTO respectant le prédicat
    */
-  def searchBatiment( predicat : (Batiment) => Boolean) : Set[Batiment] = _batiments.filter(predicat)
+  def searchBatiment( predicat : (BatimentDTO) => Boolean) : Set[BatimentDTO] = {
+    val muted_set : Set[BatimentDTO] = _batiments collect {
+      case batiment : Batiment => batiment.toDTO().asInstanceOf[BatimentDTO]
+    }
+
+    muted_set.filter(predicat)
+  }
 
   /**
-   * Recherche un Demandeur suivant un predicat
-   * @param predicat Predicat de recherche d'un Demandeur, renvoi un booleen
-   * @return
+   * Recherche les demandeurs respectant un prédicat
+   * @param predicat Prédicat de recherche d'un demandeur
+   * @return L'ensemble des demandeurs au format DTO respectant le prédicat
    */
-  def searchDemandeur( predicat : (Demandeur) => Boolean) : Set[Demandeur] = _demandeurs.filter(predicat)
+  def searchDemandeur( predicat : (DemandeurDTO) => Boolean) : Set[DemandeurDTO] = {
+    val muted_set : Set[DemandeurDTO] = _demandeurs collect {
+      case demandeur : Demandeur => demandeur.toDTO().asInstanceOf[DemandeurDTO]
+    }
+
+    muted_set.filter(predicat)
+  }
 
   /**
-    * Recherche une Tarif suivant un predicat
-    * @param predicat Predicat de recherche d'un tarif, renvoi un booleen
-    * @return
+    * Recherche les tarifs respectant un prédicat
+    * @param predicat Prédicat de recherche d'un tarif
+    * @return L'ensemble des tarifs au format DTO respectant le prédicat
     */
-  def searchTarif( predicat : (Tarif) => Boolean) : Set[Tarif] = _typesDeTarif.filter(predicat)
+  def searchTarif( predicat : (TarifDTO) => Boolean) : Set[TarifDTO] = {
+    val muted_set : Set[TarifDTO] = _typesDeTarif collect {
+      case tarif : Tarif => tarif.toDTO().asInstanceOf[TarifDTO]
+    }
+
+    muted_set.filter(predicat)
+  }
 
 
 }

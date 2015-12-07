@@ -3,7 +3,8 @@ package fr.univnantes.vroom.control.add
 import fr.univnantes.vroom.TestsConstants
 import fr.univnantes.vroom.core.Systeme
 import fr.univnantes.vroom.core.persistable.Batiment
-import fr.univnantes.vroom.datacontroller.{DataManager, DataSource, Mediator}
+import fr.univnantes.vroom.database.DataSource
+import fr.univnantes.vroom.datacontroller.{DataManager, Mediator}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{FunSpec, Matchers}
 
