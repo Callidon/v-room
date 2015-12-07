@@ -1,5 +1,6 @@
 package fr.univnantes.vroom.core
 
+import fr.univnantes.vroom.control.dto.SalleDTO
 import fr.univnantes.vroom.core.materiel.{MaterielFixe, Materiel}
 import fr.univnantes.vroom.core.tarifs.TarifSalle
 
@@ -19,7 +20,8 @@ case class Salle( var no_etage: Int,
                   var no_bat: Int,
                   var superficie: Int,
                   var batiment: Batiment,
-                  var tarif : TarifSalle) {
+                  var tarif : TarifSalle) extends Persistable {
+
 
   // Ensemble des matériels fixes liés à la salle
   private var _materiels_fixes : Set[Materiel] = Set()

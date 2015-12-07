@@ -1,5 +1,7 @@
 package fr.univnantes.vroom.core
 
+import fr.univnantes.vroom.control.dto.AdresseDTO
+
 /**
  * Classe représentant une adresse
  *
@@ -12,7 +14,7 @@ package fr.univnantes.vroom.core
 case class Adresse( var numero: String,
                     var adresse: String,
                     var code: String,
-                    var ville: String ) {
+                    var ville: String ) extends Persistable {
 
   /**
     * Affiche les informations de l'adresse

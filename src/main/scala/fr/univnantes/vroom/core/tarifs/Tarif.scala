@@ -1,5 +1,8 @@
 package fr.univnantes.vroom.core.tarifs
 
+import fr.univnantes.vroom.control.dto.TarifDTO
+import fr.univnantes.vroom.core.Persistable
+
 /**
  * Classe abstraite représentant un tarif
  *
@@ -10,7 +13,9 @@ package fr.univnantes.vroom.core.tarifs
  */
 abstract case class Tarif(var code: Int,
                           var libelle: String,
-                          var tarif: Double){
+                          var tarif: Double) extends Persistable {
+
+  override def toDTO() = new TarifDTO(code, libelle, tarif)
 
   /**
     * Affiche les informations relatives au tarif

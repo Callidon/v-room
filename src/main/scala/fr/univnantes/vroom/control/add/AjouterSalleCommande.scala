@@ -1,7 +1,8 @@
 package fr.univnantes.vroom.control.add
 
 import fr.univnantes.vroom.control.Command
-import fr.univnantes.vroom.core.{Salle, Systeme}
+import fr.univnantes.vroom.control.dto.SalleDTO
+import fr.univnantes.vroom.core.Systeme
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
@@ -10,7 +11,7 @@ import fr.univnantes.vroom.datacontroller.Mediator
  */
 class AjouterSalleCommande(system : Systeme,
                            mediator : Mediator,
-                           salle : Salle ) extends Command[Unit](system) {
+                           salle : SalleDTO ) extends Command[Unit](system) {
 
   /**
    * Méthode exécutant la commande contre le système

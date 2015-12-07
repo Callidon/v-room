@@ -1,5 +1,7 @@
 package fr.univnantes.vroom.datacontroller
 
+import fr.univnantes.vroom.control.dto.DataTransfertObject
+
 /**
  * Classe représentant un gestionnaire de données abstrait
   * @constructor Crée un nouveau gestionnaire de données
@@ -12,30 +14,30 @@ abstract class DataManager(source: DataSource) {
     * @param id L'identifiant unique de la donnée à récupérer
     * @return La donnée correspondant à l'identifiant
     */
-  def get(id : Int) : Any
+  def get(id : Int) : DataTransfertObject
 
   /**
     * Méthode récupérant l'ensemble des données gérée par le gestionnaire
     * @return L'ensemble des données gérée par le gestionnaire
     */
-  def getAll() : Set[_]
+  def getAll() : Set[DataTransfertObject]
 
   /**
     * Méthode insérant une donnée de type T dans la source de données
     * @param donnee La donnée à insérer
     */
-  def insert(donnee: Any): Unit
+  def insert(donnee: DataTransfertObject): Unit
 
   /**
     * Méthode mettant à jour une donnée dans la source de données
     * @param donnee La donnée à mettre à jour
     */
-  def update(donnee: Any) : Unit
+  def update(donnee: DataTransfertObject) : Unit
 
   /**
     * Méthode supprimant une donnée de la source de données
     * @param donnee La donnée à supprimer
     */
-  def delete(donnee : Any) : Unit
+  def delete(donnee : DataTransfertObject) : Unit
 
 }

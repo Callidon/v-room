@@ -1,5 +1,6 @@
 package fr.univnantes.vroom.core
 
+import fr.univnantes.vroom.control.dto.SalleDTO
 import fr.univnantes.vroom.core.tarifs.{Tarif, TarifSalle}
 import fr.univnantes.vroom.datacontroller.Mediator
 
@@ -8,21 +9,21 @@ import fr.univnantes.vroom.datacontroller.Mediator
  */
 class Systeme() {
 
-  private var _salles : Set[Salle] = Set()
+  private var _salles : Set[Persistable] = Set()
 
-  private var _reservations : Set[Reservation] = Set()
+  private var _reservations : Set[Persistable] = Set()
 
-  private var _batiments : Set[Batiment] = Set()
+  private var _batiments : Set[Persistable] = Set()
 
-  private var _demandeurs : Set[Demandeur] = Set()
+  private var _demandeurs : Set[Persistable] = Set()
 
-  private var _typesDeTarif : Set[Tarif] = Set()
+  private var _typesDeTarif : Set[Persistable] = Set()
 
   /**
    * Ajoute une nouvelle salle
    * @param salle La salle à ajouter
    */
-  def addSalle(salle: Salle): Unit = _salles += salle
+  def addSalle(salle: SalleDTO): Unit = _salles += DTOManager.dtoToAny(salle.no_salle)
 
   /**
    * Supprime une salle

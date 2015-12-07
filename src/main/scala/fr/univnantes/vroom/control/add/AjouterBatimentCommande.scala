@@ -1,6 +1,7 @@
 package fr.univnantes.vroom.control.add
 
 import fr.univnantes.vroom.control.Command
+import fr.univnantes.vroom.control.dto.BatimentDTO
 import fr.univnantes.vroom.core.{Batiment, Systeme}
 import fr.univnantes.vroom.datacontroller.Mediator
 
@@ -10,7 +11,7 @@ import fr.univnantes.vroom.datacontroller.Mediator
  */
 class AjouterBatimentCommande(system : Systeme,
                               mediator : Mediator,
-                              batiment : Batiment ) extends Command[Unit](system) {
+                              batiment : BatimentDTO ) extends Command[Unit](system) {
 
   /**
    * Méthode exécutant la commande contre le système

@@ -1,5 +1,7 @@
 package fr.univnantes.vroom.core
 
+import fr.univnantes.vroom.control.dto.BatimentDTO
+
 /**
  * Classe représentant un bâtiment
  *
@@ -10,7 +12,7 @@ package fr.univnantes.vroom.core
  */
 case class Batiment( var no_bat: Int,
                      var nom: String,
-                     var adresse: Adresse ) {
+                     var adresse: Adresse ) extends Persistable {
 
   private var _salles : Set[Salle] = Set()
 
