@@ -1,5 +1,8 @@
 package fr.univnantes.vroom.core.persistable
 
+import fr.univnantes.vroom.core.persistable.materiel.{MaterielFixe, Materiel}
+import fr.univnantes.vroom.core.persistable.tarifs.TarifSalle
+
 /**
  * Classe représentant une salle
  *

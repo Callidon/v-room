@@ -1,6 +1,7 @@
 package fr.univnantes.vroom.core.persistable.materiel
 
-import fr.univnantes.vroom.core.dto.{DataTransfertObject, MaterielDTO}
+import fr.univnantes.vroom.core.dto.DataTransfertObject
+import fr.univnantes.vroom.core.dto.materiel.MaterielDTO
 import fr.univnantes.vroom.core.persistable.Persistable
 import fr.univnantes.vroom.core.persistable.tarifs.TarifMateriel
 
@@ -15,8 +16,6 @@ import fr.univnantes.vroom.core.persistable.tarifs.TarifMateriel
 abstract class Materiel(var code: Int,
                         var libelle: String,
                         var tarif: TarifMateriel ) extends Persistable {
-
-  override def toDTO() : DataTransfertObject = new MaterielDTO(code, libelle, tarif.toDTO())
 
   /**
    * Méthode renvoyant le tarif du matériel

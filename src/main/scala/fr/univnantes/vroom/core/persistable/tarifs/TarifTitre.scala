@@ -1,5 +1,7 @@
 package fr.univnantes.vroom.core.persistable.tarifs
 
+import fr.univnantes.vroom.core.dto.tarifs.TarifTitreDTO
+
 /**
  * Classe représentant un tarif lié au titre du demandeur
  *
@@ -12,4 +14,5 @@ class TarifTitre(code: Int,
                  libelle: String,
                  tarif: Double) extends Tarif(code, libelle, tarif) {
 
+  override def toDTO() = new TarifTitreDTO(code, libelle, tarif)
 }

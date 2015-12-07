@@ -1,5 +1,7 @@
 package fr.univnantes.vroom.core.persistable.tarifs
 
+import fr.univnantes.vroom.core.dto.tarifs.TarifManifestationDTO
+
 /**
  * Classe représentant un tarif lié à un type de manifestation
  *
@@ -11,5 +13,5 @@ package fr.univnantes.vroom.core.persistable.tarifs
 class TarifManifestation(code: Int,
                          libelle: String,
                          tarif: Double) extends Tarif(code, libelle, tarif) {
-
+  override def toDTO() = new TarifManifestationDTO(code, libelle, tarif)
 }

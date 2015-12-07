@@ -1,8 +1,9 @@
 package fr.univnantes.vroom.core
 
 import fr.univnantes.vroom.core.dto._
+import fr.univnantes.vroom.core.dto.tarifs._
 import fr.univnantes.vroom.core.persistable._
-import fr.univnantes.vroom.core.persistable.tarifs.Tarif
+import fr.univnantes.vroom.core.persistable.tarifs._
 
 /**
  * Classe représentant l'environnement d'exécution du logiciel
@@ -145,7 +146,12 @@ class Systeme() {
     */
   def searchTarif( predicat : (TarifDTO) => Boolean) : Set[TarifDTO] = {
     val muted_set : Set[TarifDTO] = _typesDeTarif collect {
-      case tarif : Tarif => tarif.toDTO().asInstanceOf[TarifDTO]
+      case tarif : TarifDuree => tarif.toDTO().asInstanceOf[TarifDureeDTO]
+      case tarif : TarifManifestation => tarif.toDTO().asInstanceOf[TarifManifestationDTO]
+      case tarif : TarifMateriel => tarif.toDTO().asInstanceOf[TarifMaterielDTO]
+      case tarif : TarifOrigine => tarif.toDTO().asInstanceOf[TarifOrigineDTO]
+      case tarif : TarifSalle => tarif.toDTO().asInstanceOf[TarifSalleDTO]
+      case tarif : TarifTitre => tarif.toDTO().asInstanceOf[TarifTitreDTO]
     }
 
     muted_set.filter(predicat)

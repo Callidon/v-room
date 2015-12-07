@@ -1,5 +1,7 @@
 package fr.univnantes.vroom.core.persistable.tarifs
 
+import fr.univnantes.vroom.core.dto.tarifs.{TarifDureeDTO, TarifDTO}
+
 /**
  * Classe représentant un tarif lié à la durée d'un évènement
  *
@@ -11,5 +13,7 @@ package fr.univnantes.vroom.core.persistable.tarifs
 class TarifDuree(code: Int,
                  libelle: String,
                  tarif: Double) extends Tarif(code, libelle, tarif) {
+
+  override def toDTO() = new TarifDureeDTO(code, libelle, tarif)
 
 }

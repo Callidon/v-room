@@ -1,5 +1,7 @@
 package fr.univnantes.vroom.core.persistable.tarifs
 
+import fr.univnantes.vroom.core.dto.tarifs.TarifOrigineDTO
+
 /**
  * Classe représentant un tarif lié à l'origine du demandeur
  *
@@ -12,4 +14,5 @@ class TarifOrigine(code: Int,
                    libelle: String,
                    tarif: Double) extends Tarif(code, libelle, tarif) {
 
+  override def toDTO() = new TarifOrigineDTO(code, libelle, tarif)
 }
