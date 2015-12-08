@@ -1,7 +1,7 @@
 package fr.univnantes.vroom.core.persistable
 
-import fr.univnantes.vroom.core.dto.{BatimentDTO, DataTransfertObject, SalleDTO}
-import fr.univnantes.vroom.core.persistable.materiel.{Materiel, MaterielFixe}
+import fr.univnantes.vroom.core.dto.SalleDTO
+import fr.univnantes.vroom.core.persistable.materiel.MaterielFixe
 import fr.univnantes.vroom.core.persistable.tarifs.TarifSalle
 
 /**
@@ -20,12 +20,18 @@ case class Salle( var no_etage: Int,
                   var no_bat: Int,
                   var superficie: Int,
                   var batiment: Batiment,
-                  var tarif : TarifSalle) extends Persistable {
+                  var tarif : TarifSalle,
+                  var _materiels_fixes : Set[MaterielFixe]) extends Persistable {
 
-  override def toDTO() = new SalleDTO(no_etage, no_salle, no_bat, superficie, batiment.toDTO(), tarif.toDTO())
-
-  // Ensemble des matériels fixes liés à la salle
-  private var _materiels_fixes : Set[Materiel] = Set()
+  override def toDTO() = new SalleDTO(
+      no_etage,
+      no_salle,
+      no_bat,
+      superficie,
+      batiment.toDTO(),
+      tarif.toDTO(),
+      _materiels_fixes.collect{case x:MaterielFixe => x.toDTO()}
+  )
 
   /**
     * Affiche récursivement les informations de la salle

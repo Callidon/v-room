@@ -2,8 +2,7 @@ package fr.univnantes.vroom.core.dto.materiel
 
 import fr.univnantes.vroom.core.DTOManager
 import fr.univnantes.vroom.core.dto.tarifs.TarifMaterielDTO
-import fr.univnantes.vroom.core.persistable.Persistable
-import fr.univnantes.vroom.core.persistable.materiel.MaterielFixe
+import fr.univnantes.vroom.core.persistable.materiel.MaterielMobile
 import fr.univnantes.vroom.core.persistable.tarifs.TarifMateriel
 
 /**
@@ -13,6 +12,6 @@ class MaterielMobileDTO(code: Int,
                         libelle: String,
                         tarif: TarifMaterielDTO) extends MaterielDTO(code, libelle, tarif) {
 
-  override def toObject(): Persistable = new MaterielFixe(code, libelle, DTOManager.dtoToObject(tarif.code, tarif).asInstanceOf[TarifMateriel])
+  override def toObject(): MaterielMobile = new MaterielMobile(code, libelle, DTOManager.dtoToObject(tarif.code, tarif).asInstanceOf[TarifMateriel])
 
 }

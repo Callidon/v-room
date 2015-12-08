@@ -1,8 +1,10 @@
 package fr.univnantes.vroom.core
 
 import fr.univnantes.vroom.core.dto._
+import fr.univnantes.vroom.core.dto.materiel.MaterielDTO
 import fr.univnantes.vroom.core.dto.tarifs._
 import fr.univnantes.vroom.core.persistable._
+import fr.univnantes.vroom.core.persistable.materiel.{MaterielFixe, MaterielMobile}
 import fr.univnantes.vroom.core.persistable.tarifs._
 
 /**
@@ -46,6 +48,25 @@ class Systeme() {
   }
 
   /**
+    * Methode permettant d'ajouter du matériel dans une salle
+    * @param salle La salle dont on doit ajouter le materiel fixe
+    * @param materiel Le materiel Fixe à ajouter
+    */
+  def addMaterielFixe(salle: SalleDTO, materiel: MaterielDTO) : DataTransfertObject = {
+    DTOManager.dtoToObject(salle.no_salle,salle).asInstanceOf[Salle].addMateriel(materiel.toObject().asInstanceOf[MaterielFixe])
+    DTOManager.dtoToObject(salle.no_salle,salle).toDTO()
+  }
+  /**
+    * Methode permettant de supprimer du matériel dans une salle
+    * @param salle La salle dont on doit ajouter le materiel fixe
+    * @param materiel Le materiel Fixe à ajouter
+    */
+  def popMaterielFixe(salle: SalleDTO, materiel: MaterielDTO) : DataTransfertObject = {
+    DTOManager.dtoToObject(salle.no_salle,salle).asInstanceOf[Salle].popMateriel(materiel.toObject().asInstanceOf[MaterielFixe])
+    DTOManager.dtoToObject(salle.no_salle,salle).toDTO()
+  }
+
+  /**
    * Ajoute une nouvelle réservation
    * @param reservation La réservation à ajouter
    */
@@ -66,6 +87,28 @@ class Systeme() {
     */
   def viewReservation() : Set[DataTransfertObject] = {
     _reservations.collect{case x : Persistable =>  x.toDTO()}
+  }
+
+  /**
+    * Methode permettant l'ajout d'un materiel mobile dans une réservation
+    * @param reservation Objet DTO représentant une réservation
+    * @param materiel Objet DTO représentant un materiel
+    * @return
+    */
+  def addMaterielMobile(reservation: ReservationDTO, materiel: MaterielDTO) :DataTransfertObject= {
+    DTOManager.dtoToObject(reservation.ref_resa,reservation).asInstanceOf[Reservation].addMateriel(materiel.toObject().asInstanceOf[MaterielMobile])
+    DTOManager.dtoToObject(reservation.ref_resa,reservation).toDTO()
+  }
+
+  /**
+    * Methode permettant la suppresion d'un materiel mobile dans une réservation
+    * @param reservation Objet DTO représentant une réservation
+    * @param materiel Objet DTO représentant un materiel
+    * @return
+    */
+  def popMaterielMobile(reservation: ReservationDTO, materiel: MaterielDTO) :DataTransfertObject= {
+    DTOManager.dtoToObject(reservation.ref_resa,reservation).asInstanceOf[Reservation].popMateriel(materiel.toObject().asInstanceOf[MaterielMobile])
+    DTOManager.dtoToObject(reservation.ref_resa,reservation).toDTO()
   }
 
   /**

@@ -1,7 +1,7 @@
 package fr.univnantes.vroom.core.persistable
 
-import fr.univnantes.vroom.core.dto.{DataTransfertObject, ReservationDTO}
-import fr.univnantes.vroom.core.persistable.materiel.{Materiel, MaterielMobile}
+import fr.univnantes.vroom.core.dto.ReservationDTO
+import fr.univnantes.vroom.core.persistable.materiel.MaterielMobile
 import fr.univnantes.vroom.core.persistable.tarifs.{TarifDuree, TarifManifestation}
 
 /**
@@ -22,12 +22,20 @@ case class Reservation( var ref_resa: Int,
                         var salle: Salle,
                         var demandeur: Demandeur,
                         var manifestation: TarifManifestation,
-                        var duree: TarifDuree ) extends Persistable {
+                        var duree: TarifDuree,
+                        var _materiels_mobile : Set[MaterielMobile]) extends Persistable {
 
-  override def toDTO() = new ReservationDTO(ref_resa, date_resa, montant, salle.toDTO(), demandeur.toDTO(), manifestation.toDTO(), duree.toDTO())
+  override def toDTO() = new ReservationDTO(
+      ref_resa,
+      date_resa,
+      montant,
+      salle.toDTO(),
+      demandeur.toDTO(),
+      manifestation.toDTO(),
+      duree.toDTO(),
+      _materiels_mobile.collect{case x:MaterielMobile => x.toDTO() }
+  )
 
-  // Ensemble des matériels mobiles liées à la réservation
-  private var _materiels_mobile : Set[Materiel] = Set()
 
   /**
     * Affiche recursivement toutes les informations de la réservation
