@@ -3,7 +3,6 @@ package fr.univnantes.vroom.control.update
 import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.Systeme
 import fr.univnantes.vroom.core.dto.BatimentDTO
-import fr.univnantes.vroom.core.persistable.Batiment
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
@@ -22,7 +21,6 @@ class UpdateBatimentCommande(system : Systeme,
     system.popBatiment(ancien_batiment)
     //On ajoute la nouvelle
     system.addBatiment(nouveau_batiment)
-
     mediator.update(nouveau_batiment)
 
   }

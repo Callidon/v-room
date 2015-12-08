@@ -1,11 +1,13 @@
 package fr.univnantes.vroom.control.update
 
 import fr.univnantes.vroom.control.Command
+import fr.univnantes.vroom.core.Systeme
 import fr.univnantes.vroom.core.dto.ReservationDTO
-import fr.univnantes.vroom.core.persistable.Reservation
-import fr.univnantes.vroom.core.{DTOManager, Systeme}
 import fr.univnantes.vroom.datacontroller.Mediator
 
+/**
+  * Commande pour mettre à jour une réservation
+  */
 class UpdateReservationCommande(system : Systeme,
                                 mediator: Mediator,
                                 ancien_reservation : ReservationDTO,
@@ -20,6 +22,5 @@ class UpdateReservationCommande(system : Systeme,
     //On ajoute la nouvelle
     system.addReservation(nouveau_reservation)
     mediator.update(nouveau_reservation)
-
   }
 }

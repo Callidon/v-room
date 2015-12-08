@@ -54,7 +54,9 @@ class Systeme() {
     * Affiche les informations relative aux réservations
     * @return
     */
-  def viewReservation() : Unit = println(this._reservations)
+  def viewReservation() : Set[DataTransfertObject] = {
+    _reservations.collect{case x : Persistable =>  x.toDTO()}
+  }
 
   /**
    * Ajoute un nouveau batiment

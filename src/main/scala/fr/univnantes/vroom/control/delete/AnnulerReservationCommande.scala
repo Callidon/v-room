@@ -7,6 +7,7 @@ import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
   * EXIGENCE FONCTIONNELLE UC1.3
+  * Commande pour annuler une réservation
   */
 class AnnulerReservationCommande( system : Systeme,
                                   mediator : Mediator,
