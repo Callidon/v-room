@@ -10,6 +10,8 @@ import fr.univnantes.vroom.core.persistable.tarifs._
  */
 class Systeme() {
 
+
+
   private var _salles : Set[Persistable] = Set()
 
   private var _reservations : Set[Persistable] = Set()
@@ -36,6 +38,14 @@ class Systeme() {
   }
 
   /**
+    * Retourne l'ensemble des DTO Salle pour une consultation des données
+    * @return Retourne l'ensemble des DTO Salle
+    */
+  def viewSalle(): Set[DataTransfertObject] = {
+    _salles.collect{case x : Persistable =>  x.toDTO()}
+  }
+
+  /**
    * Ajoute une nouvelle réservation
    * @param reservation La réservation à ajouter
    */
@@ -51,8 +61,8 @@ class Systeme() {
   }
 
   /**
-    * Affiche les informations relative aux réservations
-    * @return
+    * Retourne l'ensemble des DTO réservation pour une consultation des données
+    * @return Retourne l'ensemble des DTO réservation
     */
   def viewReservation() : Set[DataTransfertObject] = {
     _reservations.collect{case x : Persistable =>  x.toDTO()}
@@ -74,6 +84,13 @@ class Systeme() {
   }
 
   /**
+    * Retourne l'ensemble des DTO Batiment pour une consultation des données
+    * @return Retourne l'ensemble des DTO Batiment
+    */
+  def viewBatiment(): Set[DataTransfertObject] = {
+    _batiments.collect{case x : Persistable =>  x.toDTO()}
+  }
+  /**
    * Ajoute un nouveau demandeur
    * @param demandeur La réservation à ajouter
    */
@@ -88,7 +105,13 @@ class Systeme() {
     DTOManager.deleteDto(demandeur.no_dem)
   }
 
-
+  /**
+    * Retourne l'ensemble des DTO Demandeur pour une consultation des données
+    * @return Retourne l'ensemble des DTO Demandeur
+    */
+  def viewDemandeur(): Set[DataTransfertObject] = {
+    _demandeurs.collect{case x : Persistable =>  x.toDTO()}
+  }
   /**
     * Ajoute une nouvelle salle
     * @param tarif La salle à ajouter
@@ -102,6 +125,14 @@ class Systeme() {
   def popTarif(tarif: TarifDTO) : Unit = {
     _typesDeTarif -= DTOManager.dtoToObject(tarif.code, tarif)
     DTOManager.deleteDto(tarif.code)
+  }
+
+  /**
+    * Retourne l'ensemble des DTO Types de tarifs pour une consultation des données
+    * @return Retourne l'ensemble des DTO Types de tarifs
+    */
+  def viewTarifs(): Set[DataTransfertObject] = {
+    _typesDeTarif.collect{case x : Persistable =>  x.toDTO()}
   }
 
   /**

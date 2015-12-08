@@ -1,8 +1,8 @@
 package fr.univnantes.vroom.control.add
 
 import fr.univnantes.vroom.control.Command
-import fr.univnantes.vroom.core.dto.SalleDTO
 import fr.univnantes.vroom.core.Systeme
+import fr.univnantes.vroom.core.dto.SalleDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
@@ -17,7 +17,6 @@ class AjouterSalleCommande(system : Systeme,
    * Méthode exécutant la commande contre le système
    */
   override def execute(): Unit = {
-
     system.addSalle(salle)
     mediator.insert(salle)
 
