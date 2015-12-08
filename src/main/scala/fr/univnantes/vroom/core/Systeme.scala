@@ -1,10 +1,10 @@
 package fr.univnantes.vroom.core
 
 import fr.univnantes.vroom.core.dto._
-import fr.univnantes.vroom.core.dto.materiel.MaterielDTO
+import fr.univnantes.vroom.core.dto.materiel.{MaterielDTO, MaterielFixeDTO, MaterielMobileDTO}
 import fr.univnantes.vroom.core.dto.tarifs._
 import fr.univnantes.vroom.core.persistable._
-import fr.univnantes.vroom.core.persistable.materiel.{MaterielFixe, MaterielMobile}
+import fr.univnantes.vroom.core.persistable.materiel.MaterielMobile
 import fr.univnantes.vroom.core.persistable.tarifs._
 
 /**
@@ -23,6 +23,59 @@ class Systeme() {
   private var _demandeurs : Set[Persistable] = Set()
 
   private var _typesDeTarif : Set[Persistable] = Set()
+
+  private var _materiel_disponibles_fixe : Set[Persistable] = Set()
+  private var _materiel_disponibles_mobile : Set[Persistable] = Set()
+
+  /**
+    * Methode permettant l'ajout de matériel Mobile disponible
+    * @param materiel Le materiel à supprimer de la liste
+    * @return
+    */
+  def addMaterielMobileDisponible(materiel : MaterielMobileDTO) = _materiel_disponibles_mobile += DTOManager.dtoToObject(materiel.code,materiel)
+
+  /**
+    * Methode permettant la suppression de matériel Mobile disponible
+    * @param materiel Le materiel à supprimer de la liste
+    * @return
+    */
+  def popMaterielMobileDisponible(materiel : MaterielMobileDTO) = {
+    _materiel_disponibles_mobile -= DTOManager.dtoToObject(materiel.code,materiel)
+    DTOManager.deleteDto(materiel.code)
+  }
+
+  /**
+    * Retourne l'ensemble des DTO  des materiels mobiles disponible pour une consultation des données
+    * @return Retourne l'ensemble des DTO des materiels mobiles disponibles
+    */
+  def viewMaterielMobileDisponible(): Set[DataTransfertObject] = {
+    _materiel_disponibles_mobile.collect{case x : Persistable =>  x.toDTO()}
+  }
+
+  /**
+    * Methode permettant l'ajout de matériel fixe disponible
+    * @param materiel Le materiel à supprimer de la liste
+    * @return
+    */
+  def addMaterieFixeDisponible(materiel : MaterielFixeDTO) = _materiel_disponibles_fixe += DTOManager.dtoToObject(materiel.code,materiel)
+
+  /**
+    * Methode permettant la suppression de matériel Mobile disponible
+    * @param materiel Le materiel à supprimer de la liste
+    * @return
+    */
+  def popMaterielFixeDisponible(materiel : MaterielFixeDTO) = {
+    _materiel_disponibles_fixe -= DTOManager.dtoToObject(materiel.code,materiel)
+    DTOManager.deleteDto(materiel.code)
+  }
+
+  /**
+    * Retourne l'ensemble des DTO  des materiels fixe disponible pour une consultation des données
+    * @return Retourne l'ensemble des DTO des materiels fixes disponibles
+    */
+  def viewMaterielFixeDisponible(): Set[DataTransfertObject] = {
+    _materiel_disponibles_fixe.collect{case x : Persistable =>  x.toDTO()}
+  }
 
   /**
    * Ajoute une nouvelle salle
@@ -52,17 +105,18 @@ class Systeme() {
     * @param salle La salle dont on doit ajouter le materiel fixe
     * @param materiel Le materiel Fixe à ajouter
     */
-  def addMaterielFixe(salle: SalleDTO, materiel: MaterielDTO) : DataTransfertObject = {
-    DTOManager.dtoToObject(salle.no_salle,salle).asInstanceOf[Salle].addMateriel(materiel.toObject().asInstanceOf[MaterielFixe])
-    DTOManager.dtoToObject(salle.no_salle,salle).toDTO()
+  def addMaterielFixe(salle: SalleDTO, materiel: MaterielFixeDTO) : DataTransfertObject = {
+      DTOManager.dtoToObject(salle.no_salle,salle).asInstanceOf[Salle].addMateriel(materiel.toObject())
+      DTOManager.dtoToObject(salle.no_salle,salle).toDTO()
   }
   /**
     * Methode permettant de supprimer du matériel dans une salle
     * @param salle La salle dont on doit ajouter le materiel fixe
     * @param materiel Le materiel Fixe à ajouter
+    *
     */
-  def popMaterielFixe(salle: SalleDTO, materiel: MaterielDTO) : DataTransfertObject = {
-    DTOManager.dtoToObject(salle.no_salle,salle).asInstanceOf[Salle].popMateriel(materiel.toObject().asInstanceOf[MaterielFixe])
+  def popMaterielFixe(salle: SalleDTO, materiel: MaterielFixeDTO) : DataTransfertObject = {
+    DTOManager.dtoToObject(salle.no_salle,salle).asInstanceOf[Salle].popMateriel(materiel.toObject())
     DTOManager.dtoToObject(salle.no_salle,salle).toDTO()
   }
 
@@ -228,6 +282,30 @@ class Systeme() {
     }
 
     muted_set.filter(predicat)
+  }
+  /**
+    * Recherche les
+    * @param search_pred
+    * @return
+    */
+  def searchMaterielMobileDisponible(search_pred: (MaterielMobileDTO) => Boolean): Set[MaterielMobileDTO] = {
+    val muted_set = _materiel_disponibles_fixe.collect {
+      case mat : MaterielMobileDTO => mat.toDTO().asInstanceOf[MaterielMobileDTO]
+    }
+
+    muted_set.filter(search_pred)
+  }
+  /**
+    * Recherche les
+    * @param search_pred
+    * @return
+    */
+  def searchMaterielFixeDisponible(search_pred: (MaterielFixeDTO) => Boolean): Set[MaterielFixeDTO] = {
+    val muted_set = _materiel_disponibles_fixe.collect {
+      case mat : MaterielFixeDTO => mat.toDTO().asInstanceOf[MaterielFixeDTO]
+    }
+
+    muted_set.filter(search_pred)
   }
 
   /**
