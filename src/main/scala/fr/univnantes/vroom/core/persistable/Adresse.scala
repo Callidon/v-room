@@ -11,12 +11,12 @@ import fr.univnantes.vroom.core.dto.{AdresseDTO, DataTransfertObject}
  * @param code Le code postal associé à l'adresse
  * @param ville Le nom de la ville associée à l'adresse
  */
-case class Adresse( var numero: String,
+case class Adresse( var numero: Int,
                     var adresse: String,
                     var code: String,
                     var ville: String ) extends Persistable {
 
-  override def toDTO(): DataTransfertObject = new AdresseDTO(numero, adresse, code, ville)
+  override def toDTO() = new AdresseDTO(numero, adresse, code, ville)
 
   /**
     * Affiche les informations de l'adresse

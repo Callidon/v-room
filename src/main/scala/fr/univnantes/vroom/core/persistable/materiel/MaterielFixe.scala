@@ -16,6 +16,6 @@ class MaterielFixe(code: Int,
                    libelle: String,
                    tarif: TarifMateriel ) extends Materiel(code, libelle, tarif) {
 
-  override def toDTO() : DataTransfertObject = new MaterielFixeDTO(code, libelle, tarif.toDTO())
+  override def toDTO() = new MaterielFixeDTO(code, libelle, tarif.toDTO())
 
 }

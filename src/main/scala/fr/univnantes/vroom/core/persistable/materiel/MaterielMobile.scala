@@ -16,6 +16,6 @@ class MaterielMobile(code: Int,
                      libelle: String,
                      tarif: TarifMateriel ) extends Materiel(code, libelle, tarif) {
 
-  override def toDTO() : DataTransfertObject = new MaterielMobileDTO(code, libelle, tarif.toDTO())
+  override def toDTO() = new MaterielMobileDTO(code, libelle, tarif.toDTO())
 
 }

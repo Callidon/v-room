@@ -2,6 +2,7 @@ package fr.univnantes.vroom.control.update
 
 import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.Systeme
+import fr.univnantes.vroom.core.dto.BatimentDTO
 import fr.univnantes.vroom.core.persistable.Batiment
 import fr.univnantes.vroom.datacontroller.Mediator
 
@@ -10,8 +11,8 @@ import fr.univnantes.vroom.datacontroller.Mediator
   */
 class UpdateBatimentCommande(system : Systeme,
                              mediator: Mediator,
-                             ancien_batiment : Batiment,
-                             nouveau_batiment : Batiment ) extends Command[Unit](system) {
+                             ancien_batiment : BatimentDTO,
+                             nouveau_batiment : BatimentDTO ) extends Command[Unit](system) {
 
   /**
     * Méthode exécutant la commande contre le système

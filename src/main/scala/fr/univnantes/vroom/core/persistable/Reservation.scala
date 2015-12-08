@@ -24,7 +24,7 @@ case class Reservation( var ref_resa: Int,
                         var manifestation: TarifManifestation,
                         var duree: TarifDuree ) extends Persistable {
 
-  override def toDTO() : DataTransfertObject = new ReservationDTO(ref_resa, date_resa, montant, salle.toDTO(), demandeur.toDTO(), manifestation.toDTO(), duree.toDTO())
+  override def toDTO() = new ReservationDTO(ref_resa, date_resa, montant, salle.toDTO(), demandeur.toDTO(), manifestation.toDTO(), duree.toDTO())
 
   // Ensemble des matériels mobiles liées à la réservation
   private var _materiels_mobile : Set[Materiel] = Set()

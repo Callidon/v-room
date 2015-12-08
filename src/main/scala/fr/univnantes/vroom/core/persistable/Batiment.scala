@@ -14,7 +14,7 @@ case class Batiment( var no_bat: Int,
                      var nom: String,
                      var adresse: Adresse ) extends Persistable {
 
-  override def toDTO() : DataTransfertObject = new BatimentDTO(no_bat, nom, adresse.toDTO())
+  override def toDTO() = new BatimentDTO(no_bat, nom, adresse.toDTO())
 
   private var _salles : Set[Salle] = Set()
 

@@ -19,7 +19,7 @@ case class Demandeur( var no_dem: Int,
                       var origine: TarifOrigine,
                       var titre: TarifTitre) extends Persistable {
 
-  override def toDTO() : DataTransfertObject = new DemandeurDTO(no_dem, nom, adresse.toDTO(), origine.toDTO(), titre.toDTO())
+  override def toDTO() = new DemandeurDTO(no_dem, nom, adresse.toDTO(), origine.toDTO(), titre.toDTO())
 
     override def toString : String = " Demandeur : "+
       " \n  | Numero du demandeur :"+no_dem+

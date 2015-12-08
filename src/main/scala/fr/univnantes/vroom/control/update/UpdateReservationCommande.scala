@@ -18,18 +18,7 @@ class UpdateReservationCommande(system : Systeme,
     //On supprime l'ancienne version
     system.popReservation(ancien_reservation)
     //On ajoute la nouvelle
-
-    val res = new Reservation(nouveau_reservation.ref_resa,
-      nouveau_reservation.date_resa,
-      nouveau_reservation.montant,
-      DTOManager.dtoToObject(nouveau_reservation.salle.no_salle),
-      DTOManager.dtoToObject(nouveau_reservation.demandeur.no_dem),
-      DTOManager.dtoToObject(nouveau_reservation.manifestation.code),
-      DTOManager.dtoToObject(nouveau_reservation.duree.code)
-    )
-
     system.addReservation(nouveau_reservation)
-    DTOManager.updateDto(ancien_reservation.ref_resa,res)
     mediator.update(nouveau_reservation)
 
   }
