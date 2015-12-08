@@ -1,18 +1,20 @@
 package fr.univnantes.vroom.core.dto
 
 import fr.univnantes.vroom.core.DTOManager
-import fr.univnantes.vroom.core.dto.tarifs.{TarifTitreDTO, TarifOrigineDTO}
-import fr.univnantes.vroom.core.persistable.tarifs.{TarifTitre, TarifOrigine}
+import fr.univnantes.vroom.core.dto.tarifs.{TarifOrigineDTO, TarifTitreDTO}
+import fr.univnantes.vroom.core.persistable.tarifs.{TarifOrigine, TarifTitre}
 import fr.univnantes.vroom.core.persistable.{Adresse, Demandeur, Persistable}
 
 /**
- * Created by E122371M on 07/12/15.
+ * Projet : Default (Template) Project
+ * Créé par E122371M le 07/12/15 à 23:05.
+ *
  */
-case class DemandeurDTO(val no_dem: Int,
-                        val nom: String,
-                        val adresse: AdresseDTO,
-                        val origine: TarifOrigineDTO,
-                        val titre: TarifTitreDTO) extends DataTransfertObject("Demandeur") {
+case class DemandeurDTO(var no_dem: Int,
+                        var nom: String,
+                        var adresse: AdresseDTO,
+                        var origine: TarifOrigineDTO,
+                        var titre: TarifTitreDTO) extends DataTransfertObject("Demandeur") {
 
   override def toObject(): Persistable = new Demandeur( no_dem,
                                                         nom,

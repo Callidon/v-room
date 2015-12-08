@@ -4,11 +4,13 @@ import fr.univnantes.vroom.core.DTOManager
 import fr.univnantes.vroom.core.persistable.{Adresse, Batiment, Persistable}
 
 /**
- * Created by E122371M on 07/12/15.
+ * Projet : Default (Template) Project
+ * Créé par E122371M le 07/12/15 à 23:05.
+ *
  */
-case class BatimentDTO( val no_bat: Int,
-                        val nom: String,
-                        val adresse: AdresseDTO) extends DataTransfertObject("Batiment") {
+case class BatimentDTO( var no_bat: Int,
+                        var nom: String,
+                        var adresse: AdresseDTO) extends DataTransfertObject("Batiment") {
 
   override def toObject(): Persistable = new Batiment(no_bat, nom, DTOManager.dtoToObject(adresse.numero, adresse).asInstanceOf[Adresse])
 
