@@ -1,6 +1,5 @@
-package fr.univnantes.vroom.core
+package fr.univnantes.vroom.core.persistable
 
-import fr.univnantes.vroom.core.persistable.{Batiment, Adresse}
 import org.scalatest.{FunSpec, Matchers}
 
 /**
@@ -10,10 +9,10 @@ class BatimentSpec extends FunSpec with Matchers {
 
    describe("Batiment") {
 
-    val adresse = new Adresse("18A", "Avenue des champs de Mars", "22500", "Paris")
+    val adresse = new Adresse(18, "Avenue des champs de Mars", "22500", "Paris")
     val batiment = new Batiment(10, "Salle des sports", adresse)
 
-    val adresse2 = new Adresse("18A", "Avenue des champs de Mars", "22500", "Paris")
+    val adresse2 = new Adresse(18, "Avenue des champs de Mars", "22500", "Paris")
     val batiment2 = new Batiment(10, "Salle des sports", adresse)
 
     it("toString should be better..."){

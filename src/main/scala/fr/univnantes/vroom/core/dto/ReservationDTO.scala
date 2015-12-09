@@ -27,6 +27,6 @@ case class ReservationDTO(var ref_resa: Int,
     DTOManager.dtoToObject(demandeur.no_dem, demandeur).asInstanceOf[Demandeur],
     DTOManager.dtoToObject(manifestation.code, manifestation).asInstanceOf[TarifManifestation],
     DTOManager.dtoToObject(duree.code, duree).asInstanceOf[TarifDuree],
-    materiel_mobile.collect{case x:MaterielMobile => x.toObject()}
+    materiel_mobile.collect{case x : MaterielMobile => x.toObject()}
   )
 }

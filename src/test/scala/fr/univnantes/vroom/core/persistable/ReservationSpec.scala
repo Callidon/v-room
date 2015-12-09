@@ -1,4 +1,4 @@
-package fr.univnantes.vroom.core
+package fr.univnantes.vroom.core.persistable
 
 import fr.univnantes.vroom.TestsConstants
 import fr.univnantes.vroom.core.persistable.materiel.{MaterielFixe, MaterielMobile}

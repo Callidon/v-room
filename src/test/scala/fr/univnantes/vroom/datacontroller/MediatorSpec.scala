@@ -1,8 +1,7 @@
 package fr.univnantes.vroom.datacontroller
 
-import java.util.Date
-
 import fr.univnantes.vroom.TestsConstants
+import fr.univnantes.vroom.core.dto.tarifs.TarifDureeDTO
 import fr.univnantes.vroom.database.DataSource
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{FunSpec, Matchers}
@@ -31,8 +30,8 @@ class MediatorSpec extends FunSpec with Matchers with MockFactory {
 
       it("should call the correct manager") {
         // paramétrage des mocks pour la méthode insert
-        (adresseManager.get _).expects(*).returning()
-        (batimentManager.get _).expects(*).returning()
+        (adresseManager.get _).expects(*)
+        (batimentManager.get _).expects(*)
 
         // appel des méthodes
         mediator.get(10, "Adresse")
@@ -40,7 +39,7 @@ class MediatorSpec extends FunSpec with Matchers with MockFactory {
       }
 
       it("should reject an object of an unsupported type") {
-        an [NoSuchElementException] should be thrownBy mediator.get(10, "Date")
+        an [NoSuchElementException] should be thrownBy mediator.get(10, "Tarif")
       }
     }
 
@@ -69,12 +68,12 @@ class MediatorSpec extends FunSpec with Matchers with MockFactory {
         (batimentManager.insert _).expects(*).returning()
 
         // appel des méthodes
-        mediator.insert(TestsConstants.adresse)
-        mediator.insert(TestsConstants.batiment)
+        mediator.insert(TestsConstants.adresseDTO)
+        mediator.insert(TestsConstants.batimentDTO)
       }
 
       it("should reject an object of an unsupported type") {
-        val unsupported = new Date()
+        val unsupported = new TarifDureeDTO(1, "Tarif non supporté", 15.0)
 
         an [NoSuchElementException] should be thrownBy mediator.insert(unsupported)
       }
@@ -88,12 +87,12 @@ class MediatorSpec extends FunSpec with Matchers with MockFactory {
         (batimentManager.update _).expects(*).returning()
 
         // appel des méthodes
-        mediator.update(TestsConstants.adresse)
-        mediator.update(TestsConstants.batiment)
+        mediator.update(TestsConstants.adresseDTO)
+        mediator.update(TestsConstants.batimentDTO)
       }
 
       it("should reject an object of an unsupported type") {
-        val unsupported = new Date()
+        val unsupported = new TarifDureeDTO(1, "Tarif non supporté", 15.0)
 
         an [NoSuchElementException] should be thrownBy mediator.update(unsupported)
       }
@@ -107,12 +106,12 @@ class MediatorSpec extends FunSpec with Matchers with MockFactory {
         (batimentManager.delete _).expects(*).returning()
 
         //appel des méthodes
-        mediator.delete(TestsConstants.adresse)
-        mediator.delete(TestsConstants.batiment)
+        mediator.delete(TestsConstants.adresseDTO)
+        mediator.delete(TestsConstants.batimentDTO)
       }
 
       it("should reject an object of an unsupported type") {
-        val unsupported = new Date()
+        val unsupported = new TarifDureeDTO(1, "Tarif non supporté", 15.0)
 
         an [NoSuchElementException] should be thrownBy mediator.delete(unsupported)
       }

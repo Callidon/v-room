@@ -3,7 +3,7 @@ package fr.univnantes.vroom.control.add
 import fr.univnantes.vroom.TestsConstants
 import fr.univnantes.vroom.control.delete.AnnulerReservationCommande
 import fr.univnantes.vroom.core.Systeme
-import fr.univnantes.vroom.core.persistable.Reservation
+import fr.univnantes.vroom.core.dto.ReservationDTO
 import fr.univnantes.vroom.database.DataSource
 import fr.univnantes.vroom.datacontroller.{DataManager, Mediator}
 import org.scalamock.scalatest.MockFactory
@@ -25,7 +25,7 @@ class AnnulerReservationCommandeTest extends FunSpec with Matchers with MockFact
     // on crée le mediator
     val systeme = new Systeme()
     val mediator = new Mediator()
-    val reservation = TestsConstants.reservation.copy()
+    val reservation = TestsConstants.reservationDTO.copy()
     mediator.registerManager("Reservation", reservationManager)
 
     describe("#execute") {
@@ -41,8 +41,8 @@ class AnnulerReservationCommandeTest extends FunSpec with Matchers with MockFact
         commande.execute()
 
         // récupération de la réservation nouvellement inséré
-        val predicat = (reserv : Reservation) => {
-          reserv.ref_resa == 2
+        val predicat = (reserv : ReservationDTO) => {
+          reserv.ref_resa == reservation.ref_resa
         }
 
         systeme.searchReservation(predicat) should not contain (reservation)
@@ -60,8 +60,8 @@ class AnnulerReservationCommandeTest extends FunSpec with Matchers with MockFact
         commande.execute()
 
         // récupération de la réservation nouvellement inséré
-        val predicat = (reserv : Reservation) => {
-          reserv.ref_resa == 2
+        val predicat = (reserv : ReservationDTO) => {
+          reserv.ref_resa == reservation.ref_resa
         }
 
         systeme.searchReservation(predicat) should not contain (reservation)

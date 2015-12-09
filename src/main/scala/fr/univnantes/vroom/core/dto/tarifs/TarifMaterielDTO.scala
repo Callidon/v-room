@@ -1,7 +1,7 @@
 package fr.univnantes.vroom.core.dto.tarifs
 
 import fr.univnantes.vroom.core.persistable.Persistable
-import fr.univnantes.vroom.core.persistable.tarifs.{TarifMateriel, TarifManifestation}
+import fr.univnantes.vroom.core.persistable.tarifs.TarifMateriel
 
 /**
   * Created by thomas on 07/12/15.

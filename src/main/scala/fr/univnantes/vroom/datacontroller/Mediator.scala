@@ -44,18 +44,18 @@ class Mediator() {
    * Méthode effectuant l'insertion d'une donnée dans la source de données via le bon gestionnaire
    * @param donnee La donnée à insérer
    */
-  def insert(donnee : DataTransfertObject) : Unit = getManager(donnee.getClass.getSimpleName).insert(donnee)
+  def insert(donnee : DataTransfertObject) : Unit = getManager(donnee.className).insert(donnee)
 
   /**
    * Méthode effectuant la mise à jour d'une donnée dans la source de données via le bon gestionnaire
    * @param donnee La donnée à mettre à jour
    */
-  def update(donnee : DataTransfertObject) : Unit = getManager(donnee.getClass.getSimpleName).update(donnee)
+  def update(donnee : DataTransfertObject) : Unit = getManager(donnee.className).update(donnee)
 
   /**
    * Méthode effectuant la suppression d'une donnée dans la source de données via le bon gestionnaire
    * @param donnee La donnée à supprimer
    */
-  def delete(donnee : DataTransfertObject) : Unit = getManager(donnee.getClass.getSimpleName).delete(donnee)
+  def delete(donnee : DataTransfertObject) : Unit = getManager(donnee.className).delete(donnee)
 
 }

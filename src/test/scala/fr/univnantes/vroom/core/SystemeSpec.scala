@@ -1,8 +1,8 @@
 package fr.univnantes.vroom.core
 
 import fr.univnantes.vroom.TestsConstants
-import fr.univnantes.vroom.core.persistable.{Salle, Reservation, Demandeur, Batiment}
-import fr.univnantes.vroom.core.persistable.tarifs.Tarif
+import fr.univnantes.vroom.core.dto.tarifs.{TarifDTO, TarifSalleDTO}
+import fr.univnantes.vroom.core.dto.{BatimentDTO, DemandeurDTO, ReservationDTO, SalleDTO}
 import org.scalatest.{FunSpec, Matchers}
 
 /**
@@ -15,11 +15,11 @@ class SystemeSpec extends FunSpec with Matchers {
     // création d'un système et ajout de quelques éléments
     val systeme = new Systeme()
 
-    val salle = TestsConstants.salle.copy()
-    val reservation = TestsConstants.reservation.copy()
-    val batiment = TestsConstants.batiment.copy()
-    val demandeur = TestsConstants.demandeur.copy()
-    val tarif = TestsConstants.tarif_salle
+    val salle = TestsConstants.salleDTO.copy()
+    val reservation = TestsConstants.reservationDTO.copy()
+    val batiment = TestsConstants.batimentDTO.copy()
+    val demandeur = TestsConstants.demandeurDTO.copy()
+    val tarif = TestsConstants.tarif_salleDTO
 
     systeme.addSalle(salle)
     systeme.addReservation(reservation)
@@ -30,7 +30,7 @@ class SystemeSpec extends FunSpec with Matchers {
     describe("#searchReservation") {
 
       it("can perform a search with success") {
-        val predicat = (reserv : Reservation) => {
+        val predicat = (reserv : ReservationDTO) => {
           reserv.montant >= 14.0
         }
 
@@ -41,7 +41,7 @@ class SystemeSpec extends FunSpec with Matchers {
     describe("#searchSalle") {
 
       it("can perform a search with success") {
-        val predicat = (salle : Salle) => {
+        val predicat = (salle : SalleDTO) => {
           salle.superficie == 60
         }
 
@@ -52,7 +52,7 @@ class SystemeSpec extends FunSpec with Matchers {
     describe("#searchBatiment") {
 
       it("can perform a search with success") {
-        val predicat = (batiment: Batiment) => {
+        val predicat = (batiment: BatimentDTO) => {
           batiment.nom.equals("Salle des sports")
         }
 
@@ -63,8 +63,8 @@ class SystemeSpec extends FunSpec with Matchers {
     describe("#searchDemandeur") {
 
       it("can perform a search with success") {
-        val predicat = (demandeur: Demandeur) => {
-          demandeur.no_dem == 10
+        val predicat = (demandeur: DemandeurDTO) => {
+          demandeur.no_dem == 9
         }
 
         systeme.searchDemandeur(predicat) should contain (demandeur)
@@ -74,8 +74,8 @@ class SystemeSpec extends FunSpec with Matchers {
     describe("#searchTarif") {
 
       it("can perform a search with success") {
-        val predicat = (tarif: Tarif) => {
-          tarif.tarif >= 130.0
+        val predicat = (tarif: TarifDTO) => {
+          tarif.tarif >= 130.0 && tarif.isInstanceOf[TarifSalleDTO]
         }
 
         systeme.searchTarif(predicat) should contain (tarif)
