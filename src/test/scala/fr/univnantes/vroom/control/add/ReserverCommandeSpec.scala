@@ -5,6 +5,6 @@ import org.scalatest.FunSuite
 /**
   * Created by folkvir on 07/12/15.
   */
-class ReserverCommandeTest extends FunSuite {
+class ReserverCommandeSpec extends FunSuite {
 
 }

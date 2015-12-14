@@ -12,7 +12,7 @@ import org.scalatest.{FunSpec, Matchers}
 /**
   * Cas de tests pour la classe AnnulerReservationCommande
   */
-class AnnulerReservationCommandeTest extends FunSpec with Matchers with MockFactory {
+class AnnulerReservationCommandeSpec extends FunSpec with Matchers with MockFactory {
 
   describe("AnnulerReservationCommande") {
 

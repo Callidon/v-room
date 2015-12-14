@@ -29,15 +29,6 @@ object DTOManager {
     _dtos(id)
   }
 
-
-  /**
-    * Méthode remplaçant un ancien Dto par un nouvel objet Persistable.
-    * @param id Id de l'objet stocké
-    * @param objet nouvel objet à persister
-    * @return
-    */
-  def updateDto(id:Int, objet : Persistable) = _dtos.updated(id,objet)
-
   /**
     * Suppression d'un couple dans _dtos
     * @param id Id d'un objet
