@@ -5,13 +5,16 @@ import fr.univnantes.vroom.core.Systeme
 import fr.univnantes.vroom.core.dto.materiel.MaterielFixeDTO
 
 /**
- * EXIGENCE FONCTIONNELLE UC3.5
- */
-class SearchMaterielFixeDisponibleCommande(system : Systeme,
-                                           search_pred : (MaterielFixeDTO) => Boolean) extends Command[Set[MaterielFixeDTO]](system) {
+  * Commande de recherche pour matériel fixe
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param search_pred Prédicat de recherche
+  */
+class SearchMaterielFixeDisponibleCommande(system: Systeme,
+                                           search_pred: (MaterielFixeDTO) => Boolean) extends Command[Set[MaterielFixeDTO]](system) {
   /**
-   * Méthode exécutant la commande contre le système
-   */
+    * Execute la commande
+    * @return Set de DTO materiel fixe
+    */
   override def execute(): Set[MaterielFixeDTO] = {
     system.searchMaterielFixeDisponible(search_pred)
   }

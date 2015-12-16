@@ -5,15 +5,16 @@ import fr.univnantes.vroom.core.Systeme
 import fr.univnantes.vroom.core.dto.ReservationDTO
 
 /**
-*  Projet : v-room
-*  Créé par E122371M le 30/11/15 à 00:03.
-*
-*/
-class SearchReservationCommande(system : Systeme,
-                                search_pred : (ReservationDTO) => Boolean) extends Command[Set[ReservationDTO]](system) {
+  * Commande de recherche pour réservation
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param search_pred Prédicat de recherche
+  */
+class SearchReservationCommande(system: Systeme,
+                                search_pred: (ReservationDTO) => Boolean) extends Command[Set[ReservationDTO]](system) {
   /**
-   * Méthode exécutant la commande contre le système
-   */
+    * Execute la commande
+    * @return Set de DTO batiment
+    */
   override def execute(): Set[ReservationDTO] = {
     system.searchReservation(search_pred)
   }

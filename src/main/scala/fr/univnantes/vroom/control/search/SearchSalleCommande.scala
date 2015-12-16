@@ -5,13 +5,16 @@ import fr.univnantes.vroom.core.Systeme
 import fr.univnantes.vroom.core.dto.SalleDTO
 
 /**
- * EXIGENCE FONCTIONNELLE UC2.2
- */
-class SearchSalleCommande(system : Systeme,
-                          search_pred : (SalleDTO) => Boolean) extends Command[Set[SalleDTO]](system) {
+  * Commande de recherche pour Salle
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param search_pred Prédicat de recherche
+  */
+class SearchSalleCommande(system: Systeme,
+                          search_pred: (SalleDTO) => Boolean) extends Command[Set[SalleDTO]](system) {
   /**
-   * Méthode exécutant la commande contre le système
-   */
+    * Execute la commande
+    * @return Set de DTO sale
+    */
   override def execute(): Set[SalleDTO] = {
     system.searchSalle(search_pred)
   }

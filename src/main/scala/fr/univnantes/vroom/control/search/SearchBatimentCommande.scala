@@ -5,13 +5,16 @@ import fr.univnantes.vroom.core.Systeme
 import fr.univnantes.vroom.core.dto.BatimentDTO
 
 /**
- * EXIGENCE FONCTIONNELLE UC3.2
- */
-class SearchBatimentCommande( system : Systeme,
-                              search_pred : (BatimentDTO) => Boolean) extends Command[Set[BatimentDTO]](system) {
+  * Commande de recherche pour batiment
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param search_pred Prédicat de recherche
+  */
+class SearchBatimentCommande(system: Systeme,
+                             search_pred: (BatimentDTO) => Boolean) extends Command[Set[BatimentDTO]](system) {
   /**
-   * Méthode exécutant la commande contre le système
-   */
+    * Execute la commande
+    * @return Set de DTO batiment
+    */
   override def execute(): Set[BatimentDTO] = {
     system.searchBatiment(search_pred)
   }
