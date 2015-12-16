@@ -6,16 +6,18 @@ import fr.univnantes.vroom.core.dto.ReservationDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * EXIGENCE FONCTIONNELLE UC1.1
- * Classe repésentant la commande ajoutant une reservation au système
- */
-class ReserverCommande(system : Systeme,
+  * Commande de réservation
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param reservation DTO
+  */
+class ReserverCommande(system: Systeme,
                        mediator: Mediator,
-                       reservation : ReservationDTO) extends Command[Unit](system) {
+                       reservation: ReservationDTO) extends Command[Unit](system) {
 
   /**
-   * Méthode exécutant la commande contre le système
-   */
+    * Méthode exécutant la commande contre le système
+    */
   override def execute(): Unit = {
     system.addReservation(reservation)
     mediator.insert(reservation)

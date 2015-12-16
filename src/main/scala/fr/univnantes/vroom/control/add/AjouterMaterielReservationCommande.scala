@@ -7,19 +7,21 @@ import fr.univnantes.vroom.core.dto.materiel.MaterielMobileDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * EXIGENCE FONCTIONNELLE UC2.1
- * Classe repésentant la commande ajoutant un materiel à une reservation au système
- */
-class AjouterMaterielReservationCommande(system : Systeme,
-                                         mediator : Mediator,
-                                         reservation : ReservationDTO,
-                                         materiel : MaterielMobileDTO ) extends Command[Unit](system) {
-
+  * Commande d'ajout d'un materiel à une réservation
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param reservation DTO
+  * @param materiel DTO
+  */
+class AjouterMaterielReservationCommande(system: Systeme,
+                                         mediator: Mediator,
+                                         reservation: ReservationDTO,
+                                         materiel: MaterielMobileDTO) extends Command[Unit](system) {
   /**
-   * Méthode exécutant la commande contre le système
-   */
+    * Méthode exécutant la commande contre le système
+    */
   override def execute(): Unit = {
-    val new_reservation = system.addMaterielMobile(reservation,materiel).asInstanceOf[ReservationDTO]
+    val new_reservation = system.addMaterielMobile(reservation, materiel).asInstanceOf[ReservationDTO]
     //Suppression du matos dans la liste de dispo mobile
     system.popMaterielMobileDisponible(materiel)
     system.popReservation(reservation)

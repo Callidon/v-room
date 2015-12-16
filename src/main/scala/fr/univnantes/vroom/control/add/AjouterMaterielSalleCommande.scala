@@ -7,19 +7,22 @@ import fr.univnantes.vroom.core.dto.materiel.MaterielFixeDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * EXIGENCE FONCTIONNELLE UC2.1
- * Classe repésentant la commande ajoutant une salle au système
- */
-class AjouterMaterielSalleCommande(system : Systeme,
-                                   mediator : Mediator,
-                                   salle : SalleDTO,
-                                   materiel : MaterielFixeDTO ) extends Command[Unit](system) {
+  * Commande d'ajout d'un materiel à une salle
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param salle DTO
+  * @param materiel DTO
+  */
+class AjouterMaterielSalleCommande(system: Systeme,
+                                   mediator: Mediator,
+                                   salle: SalleDTO,
+                                   materiel: MaterielFixeDTO) extends Command[Unit](system) {
 
   /**
-   * Méthode exécutant la commande contre le système
-   */
+    * Méthode exécutant la commande contre le système
+    */
   override def execute(): Unit = {
-    val new_salle = system.addMaterielFixe(salle,materiel).asInstanceOf[SalleDTO]
+    val new_salle = system.addMaterielFixe(salle, materiel).asInstanceOf[SalleDTO]
     //Suppression du matos dans la liste de dispo mobile
     system.popMaterielFixeDisponible(materiel)
     system.popSalle(salle)
