@@ -6,12 +6,19 @@ import fr.univnantes.vroom.core.{DTOManager, Systeme}
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * EXIGENCE FONCTIONNELLE UC2.4
+  *
+  * Commande de suppression d'une salle
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param salle DTO
   */
-class SupprimerSalleCommande (system : Systeme,
-                              mediator: Mediator,
-                              salle : SalleDTO) extends Command[Unit](system) {
-  override def execute() : Unit = {
+class SupprimerSalleCommande(system: Systeme,
+                             mediator: Mediator,
+                             salle: SalleDTO) extends Command[Unit](system) {
+  /**
+    * Execute la commande
+    */
+  override def execute(): Unit = {
     DTOManager.deleteDto(salle.no_salle)
     system.popSalle(salle)
     mediator.delete(salle)

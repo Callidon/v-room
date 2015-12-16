@@ -6,17 +6,20 @@ import fr.univnantes.vroom.core.dto.DemandeurDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * Projet : v-room
-  * Créé par folkvir le 08/12/15 à 22:56.
-  *
+  * Commande de suppression d'un emandeur
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param demandeur DTO
   */
-class SupprimerDemandeurCommande (
-                                   system:Systeme,
-                                   mediator:Mediator,
-                                   demandeur:DemandeurDTO
-                                 ) extends Command[Unit](system){
-
-  override def execute() : Unit = {
+class SupprimerDemandeurCommande(
+                                  system: Systeme,
+                                  mediator: Mediator,
+                                  demandeur: DemandeurDTO
+                                ) extends Command[Unit](system) {
+  /**
+    * Execute la commande
+    */
+  override def execute(): Unit = {
     system.popDemandeur(demandeur)
     mediator.delete(demandeur)
   }

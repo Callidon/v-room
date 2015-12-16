@@ -6,12 +6,18 @@ import fr.univnantes.vroom.core.{DTOManager, Systeme}
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * EXIGENCE FONCTIONNELLE UC3.4
+  * Commande de suppression d'un batiment
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param batiment DTO
   */
-class SupprimerBatimentCommande(system : Systeme,
+class SupprimerBatimentCommande(system: Systeme,
                                 mediator: Mediator,
-                                batiment : BatimentDTO) extends Command[Unit](system) {
-  override def execute() : Unit = {
+                                batiment: BatimentDTO) extends Command[Unit](system) {
+  /**
+    * Execute la commande
+    */
+  override def execute(): Unit = {
     DTOManager.deleteDto(batiment.no_bat)
     system.popBatiment(batiment)
     mediator.delete(batiment)

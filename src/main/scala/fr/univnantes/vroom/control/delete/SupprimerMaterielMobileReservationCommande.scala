@@ -7,18 +7,24 @@ import fr.univnantes.vroom.core.dto.materiel.MaterielMobileDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * Projet : v-room
-  * Créé par folkvir le 08/12/15 à 19:02.
   *
+  * Commande de suppression d'un materiel mobile d'une résrvation
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param reservation DTO
+  * @param materiel DTO
   */
-class SupprimerMaterielMobileReservationCommande (
-                                                   system: Systeme,
-                                                   mediator: Mediator,
-                                                   reservation: ReservationDTO,
-                                                   materiel:MaterielMobileDTO
-                                                 )extends Command[Unit](system){
-  override def execute() : Unit = {
-    val reserv = system.popMaterielMobile(reservation,materiel).asInstanceOf[ReservationDTO]
+class SupprimerMaterielMobileReservationCommande(
+                                                  system: Systeme,
+                                                  mediator: Mediator,
+                                                  reservation: ReservationDTO,
+                                                  materiel: MaterielMobileDTO
+                                                ) extends Command[Unit](system) {
+  /**
+    * Execute la commande
+    */
+  override def execute(): Unit = {
+    val reserv = system.popMaterielMobile(reservation, materiel).asInstanceOf[ReservationDTO]
     system.addMaterielMobileDisponible(materiel)
     //On met à jour le système et le mediator
     system.popReservation(reservation)

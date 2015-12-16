@@ -6,16 +6,20 @@ import fr.univnantes.vroom.core.dto.materiel.MaterielFixeDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * Projet : v-room
-  * Créé par folkvir le 08/12/15 à 18:56.
-  *
+  * Commande de suppression d'un materiel fixe disponible
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param materiel DTO
   */
 class SupprimerMaterielFixeDisponibleCommande(
-                                        system: Systeme,
-                                        mediator: Mediator,
-                                        materiel:MaterielFixeDTO
-                                        )extends Command[Unit](system){
-  override def execute() : Unit = {
+                                               system: Systeme,
+                                               mediator: Mediator,
+                                               materiel: MaterielFixeDTO
+                                             ) extends Command[Unit](system) {
+  /**
+    * Execute la commande
+    */
+  override def execute(): Unit = {
     system.popMaterielFixeDisponible(materiel)
     //On met à jour  le mediator
     mediator.update(materiel)

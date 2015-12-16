@@ -6,14 +6,18 @@ import fr.univnantes.vroom.core.dto.ReservationDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * EXIGENCE FONCTIONNELLE UC1.3
-  * Commande pour annuler une réservation
+  * Commande de suppression d'une réservation
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param reservation DT
   */
-class AnnulerReservationCommande( system : Systeme,
-                                  mediator : Mediator,
-                                  reservation : ReservationDTO) extends Command[Unit](system) {
-
-  override def execute() : Unit = {
+class AnnulerReservationCommande(system: Systeme,
+                                 mediator: Mediator,
+                                 reservation: ReservationDTO) extends Command[Unit](system) {
+  /**
+    * Execute la commande
+    */
+  override def execute(): Unit = {
     system.popReservation(reservation)
     mediator.delete(reservation)
   }
