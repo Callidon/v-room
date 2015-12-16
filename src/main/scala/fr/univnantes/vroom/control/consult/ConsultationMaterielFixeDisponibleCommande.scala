@@ -5,10 +5,15 @@ import fr.univnantes.vroom.core.Systeme
 import fr.univnantes.vroom.core.dto.DataTransfertObject
 
 /**
-  * EXIGENCE FONCTIONNELLE UC1.2
+  * Commqnde de consultation des matériel mobile
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
   */
-class ConsultationMaterielFixeDisponibleCommande(system : Systeme) extends Command[Set[DataTransfertObject]](system){
+class ConsultationMaterielFixeDisponibleCommande(system: Systeme) extends Command[Set[DataTransfertObject]](system) {
 
+  /**
+    * Fonction lançant la commande
+    * @return Retourne un Set de DTO de matériels mobile disponible
+    */
   override def execute(): Set[DataTransfertObject] = system.viewMaterielFixeDisponible()
 
 }

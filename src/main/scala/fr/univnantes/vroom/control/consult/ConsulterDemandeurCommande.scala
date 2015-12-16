@@ -2,19 +2,18 @@ package fr.univnantes.vroom.control.consult
 
 import fr.univnantes.vroom.control.Command
 import fr.univnantes.vroom.core.Systeme
-import fr.univnantes.vroom.core.dto.{DataTransfertObject, DemandeurDTO}
-import fr.univnantes.vroom.datacontroller.Mediator
+import fr.univnantes.vroom.core.dto.DataTransfertObject
 
 /**
-  * Projet : v-room
-  * Créé par folkvir le 08/12/15 à 22:54.
-  *
+  * Commande permettant la consultation des demandeurs
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
   */
-class ConsulterDemandeurCommande (
-                                   system:Systeme,
-                                   mediator:Mediator,
-                                   demandeur:DemandeurDTO
-                                 ) extends Command[Set[DataTransfertObject]](system){
-
-  override def execute() : Set[DataTransfertObject] = system.viewDemandeur()
+class ConsulterDemandeurCommande(
+                                  system: Systeme
+                                ) extends Command[Set[DataTransfertObject]](system) {
+  /**
+    *
+    * @return Set de DTO de demandeurs
+    */
+  override def execute(): Set[DataTransfertObject] = system.viewDemandeur()
 }
