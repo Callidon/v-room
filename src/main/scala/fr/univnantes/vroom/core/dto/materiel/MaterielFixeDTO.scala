@@ -11,7 +11,7 @@ import fr.univnantes.vroom.core.persistable.tarifs.TarifMateriel
   * @param libelle String, Libellé du materiel
   * @param tarif DTO, Tarif du matériel
   */
-class MaterielFixeDTO( code: Int,
+class MaterielFixeDTO(code: Int,
                       libelle: String,
                       tarif: TarifMaterielDTO) extends MaterielDTO(code, libelle, tarif) {
   /**

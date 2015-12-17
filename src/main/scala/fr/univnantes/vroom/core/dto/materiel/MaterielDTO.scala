@@ -8,8 +8,8 @@ import fr.univnantes.vroom.core.dto.DataTransfertObject
   * @param libelle String, Libellé du materiel
   * @param tarif DTO, Tarif du matériel
   */
-abstract case class MaterielDTO(  var code: Int,
-                                  var libelle: String,
-                                  var tarif: DataTransfertObject) extends DataTransfertObject("Materiel") {
+abstract case class MaterielDTO(var code: Int,
+                                var libelle: String,
+                                var tarif: DataTransfertObject) extends DataTransfertObject("Materiel") {
 
 }
