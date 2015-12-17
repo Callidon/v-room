@@ -3,10 +3,14 @@ package fr.univnantes.vroom.core.dto
 import fr.univnantes.vroom.core.persistable.Persistable
 
 /**
- * Created by E122371M on 07/12/15.
- */
-abstract class DataTransfertObject(val className : String) {
-
-  def toObject() : Persistable
+  * Classe abstraite représentant un DTO
+  * @param className Nom de la classe représentant le DTO
+  */
+abstract class DataTransfertObject(val className: String) {
+  /**
+    * Transforme le DTO en objet concret du système
+    * @return Retourne un DTO
+    */
+  def toObject: Persistable
 
 }

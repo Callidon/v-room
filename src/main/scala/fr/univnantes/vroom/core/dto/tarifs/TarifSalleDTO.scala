@@ -16,6 +16,6 @@ class TarifSalleDTO(code: Int,
     * Méthode transformant le DTO en Objet pour le système
     * @return Retourne un objet concret du système
     */
-  override def toObject(): Persistable = new TarifSalle(code, libelle, tarif)
+  override def toObject: Persistable = new TarifSalle(code, libelle, tarif)
 
 }

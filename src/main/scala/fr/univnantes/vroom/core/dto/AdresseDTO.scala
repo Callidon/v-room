@@ -3,15 +3,20 @@ package fr.univnantes.vroom.core.dto
 import fr.univnantes.vroom.core.persistable.{Adresse, Persistable}
 
 /**
- * Projet : Default (Template) Project
- * Créé par E122371M le 07/12/15 à 23:05.
- *
- */
+  * Classe représentant une Adresse
+  * @param numero Int numéro de l'adresse
+  * @param adresse String Libellé de l'adresse
+  * @param code String code postal de la ville
+  * @param ville String Nom de la Ville
+  */
 case class AdresseDTO(var numero: Int,
                       var adresse: String,
                       var code: String,
                       var ville: String) extends DataTransfertObject("Adresse") {
-
-  override def toObject(): Persistable = new Adresse(numero, adresse, code, ville)
+  /**
+    * Transforme le DTO en objet concret du système
+    * @return
+    */
+  override def toObject: Persistable = new Adresse(numero, adresse, code, ville)
 
 }

@@ -18,5 +18,5 @@ class MaterielFixeDTO(code: Int,
     * Méthode transformant le DTO en Objet pour le système
     * @return Retourne un objet concret du système
     */
-  override def toObject(): MaterielFixe = new MaterielFixe(code, libelle, DTOManager.dtoToObject(tarif.code, tarif).asInstanceOf[TarifMateriel])
+  override def toObject: MaterielFixe = new MaterielFixe(code, libelle, DTOManager.dtoToObject(tarif.code, tarif).asInstanceOf[TarifMateriel])
 }
