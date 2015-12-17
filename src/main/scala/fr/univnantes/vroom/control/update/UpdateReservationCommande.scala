@@ -6,12 +6,16 @@ import fr.univnantes.vroom.core.dto.ReservationDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * Commande pour mettre à jour une réservation
+  * Commande d'update d'une réservation
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param ancien_reservation ancienne réservation
+  * @param nouveau_reservation nouvelle réservation
   */
-class UpdateReservationCommande(system : Systeme,
+class UpdateReservationCommande(system: Systeme,
                                 mediator: Mediator,
-                                ancien_reservation : ReservationDTO,
-                                nouveau_reservation : ReservationDTO ) extends Command[Unit](system) {
+                                ancien_reservation: ReservationDTO,
+                                nouveau_reservation: ReservationDTO) extends Command[Unit](system) {
 
   /**
     * Méthode exécutant la commande contre le système

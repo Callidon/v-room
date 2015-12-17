@@ -6,18 +6,22 @@ import fr.univnantes.vroom.core.dto.DemandeurDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * Projet : v-room
-  * Créé par folkvir le 08/12/15 à 22:59.
-  *
+  * Commande d'update de demandeur
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param old_demandeur ancien DTO
+  * @param new_demandeur nouveau DTO
   */
-class UpdateDemandeurCommande (
-                                system:Systeme,
-                                mediator:Mediator,
-                                old_demandeur:DemandeurDTO,
-                                new_demandeur: DemandeurDTO
-                              ) extends Command[Unit](system){
-
-  override def execute() : Unit = {
+class UpdateDemandeurCommande(
+                               system: Systeme,
+                               mediator: Mediator,
+                               old_demandeur: DemandeurDTO,
+                               new_demandeur: DemandeurDTO
+                             ) extends Command[Unit](system) {
+  /**
+    * Méthode exécutant la commande contre le système
+    */
+  override def execute(): Unit = {
     system.popDemandeur(old_demandeur)
     system.addDemandeur(new_demandeur)
     mediator.update(new_demandeur)

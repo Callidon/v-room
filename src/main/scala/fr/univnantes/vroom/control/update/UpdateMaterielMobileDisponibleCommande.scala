@@ -6,16 +6,21 @@ import fr.univnantes.vroom.core.dto.materiel.MaterielMobileDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * Projet : v-room
-  * Créé par folkvir le 08/12/15 à 19:04.
-  *
+  * Commande d'update de materiel mobile disponible
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param old_materiel ancien DTO
+  * @param new_materiel nouveau DTO
   */
 class UpdateMaterielMobileDisponibleCommande(
-                                               system : Systeme,
-                                              mediator : Mediator,
-                                              old_materiel : MaterielMobileDTO,
-                                              new_materiel : MaterielMobileDTO) extends Command[Unit](system) {
-  override def execute() : Unit ={
+                                              system: Systeme,
+                                              mediator: Mediator,
+                                              old_materiel: MaterielMobileDTO,
+                                              new_materiel: MaterielMobileDTO) extends Command[Unit](system) {
+  /**
+    * Méthode exécutant la commande contre le système
+    */
+  override def execute(): Unit = {
     system.popMaterielMobileDisponible(old_materiel)
     system.addMaterielMobileDisponible(new_materiel)
     mediator.update(new_materiel)

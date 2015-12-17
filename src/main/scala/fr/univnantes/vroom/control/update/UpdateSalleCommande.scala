@@ -6,12 +6,16 @@ import fr.univnantes.vroom.core.dto.SalleDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * Commande pour mettre à jour une réservation
+  * Commande d'update d'une salle
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param ancien_salle ancienne salle
+  * @param nouveau_salle nouvelle salle
   */
-class UpdateSalleCommande(system : Systeme,
+class UpdateSalleCommande(system: Systeme,
                           mediator: Mediator,
-                          ancien_salle : SalleDTO,
-                          nouveau_salle : SalleDTO ) extends Command[Unit](system) {
+                          ancien_salle: SalleDTO,
+                          nouveau_salle: SalleDTO) extends Command[Unit](system) {
 
   /**
     * Méthode exécutant la commande contre le système

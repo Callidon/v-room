@@ -6,12 +6,16 @@ import fr.univnantes.vroom.core.dto.BatimentDTO
 import fr.univnantes.vroom.datacontroller.Mediator
 
 /**
-  * EXIGENCE FONCTIONNELLE UC3.3
+  * Commande d'update de demandeur
+  * @param system  Objet utilisé pour le fonctionnement du logiciel
+  * @param mediator Objet utilisé pour la persistence des données
+  * @param ancien_batiment ancien DTO
+  * @param nouveau_batiment nouveau DTO
   */
-class UpdateBatimentCommande(system : Systeme,
+class UpdateBatimentCommande(system: Systeme,
                              mediator: Mediator,
-                             ancien_batiment : BatimentDTO,
-                             nouveau_batiment : BatimentDTO ) extends Command[Unit](system) {
+                             ancien_batiment: BatimentDTO,
+                             nouveau_batiment: BatimentDTO) extends Command[Unit](system) {
 
   /**
     * Méthode exécutant la commande contre le système
