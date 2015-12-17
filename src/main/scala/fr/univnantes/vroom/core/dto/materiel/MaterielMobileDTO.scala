@@ -18,6 +18,6 @@ class MaterielMobileDTO(code: Int,
     * Méthode transformant le DTO en Objet pour le système
     * @return Retourne un objet concret du système
     */
-  override def toObject(): MaterielMobile = new MaterielMobile(code, libelle, DTOManager.dtoToObject(tarif.code, tarif).asInstanceOf[TarifMateriel])
+  override def toObject: MaterielMobile = new MaterielMobile(code, libelle, DTOManager.dtoToObject(tarif.code, tarif).asInstanceOf[TarifMateriel])
 
 }
