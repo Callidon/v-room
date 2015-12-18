@@ -6,7 +6,7 @@ import org.scalamock.scalatest.MockFactory
 import org.scalatest.{Matchers, FunSpec}
 
 /**
-  * Classe représentant les jeux de tests pour la singelton DTOManager
+  * Classe représentant les jeux de tests pour la singleton DTOManager
   */
 class DTOManagerSpec extends FunSpec with Matchers with MockFactory {
 

@@ -81,10 +81,7 @@ class SystemeSpec extends FunSpec with Matchers {
         systeme.searchTarif(predicat) should contain (tarif)
       }
     }
-
-
   }
-
 }
 
 

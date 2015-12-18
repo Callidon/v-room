@@ -12,6 +12,7 @@ class AdresseSpec extends FunSpec with Matchers {
     val adresse = new Adresse(5, "Rue du port", "44000", "Nantes")
 
     describe("#toString") {
+
       it("should return a correct representation of the object"){
         adresse.toString should be (" Adresse :  "+
           " \n  | Numero : 5"+
